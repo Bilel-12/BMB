@@ -1,0 +1,68 @@
+/* condition.scss */
+
+$primary-color: #4a90e2; /* Primary color for title and accents */
+$secondary-color: #2c3e50; /* Secondary color for text */
+$background-color: #f7f9fc; /* Light background for contrast */
+$heading-font: "Poppins", sans-serif;
+$text-font: "Roboto", sans-serif;
+
+.con {
+  font-family: $heading-font;
+  color: $primary-color;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  text-transform: uppercase;
+
+  &::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background-color: $primary-color;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+}
+
+.con-p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 20px;
+
+  strong {
+    color: $primary-color;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  div {
+    padding: 15px;
+  }
+
+  .con {
+    font-size: 2rem;
+  }
+
+  .con-p {
+    font-size: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
