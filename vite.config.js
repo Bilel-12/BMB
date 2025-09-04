@@ -15,9 +15,7 @@ export default defineConfig({
     port: 10000,
     proxy: {
       "/api": {
-        // target: "https://bmb-76h1.onrender.com",
-        target: "http://localhost:3000",
-      
+        target: "https://bmb-76h1.onrender.com",
         changeOrigin: true,
         secure: false, // Disable SSL verification if necessary
         cookieDomainRewrite: {
