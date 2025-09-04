@@ -65,96 +65,96 @@ const Admin = () => {
   const [passwords, setPasswords] = useState("");
 
 
-  // const downloadPDF = () => {
-  //   const doc = new jsPDF();
+  const downloadPDF = () => {
+    const doc = new jsPDF();
 
-  //   doc.addFont("Amiri-Italic-italic.ttf", "Amiri", "normal"); // Ensure the font name matches your converted file
-  //   doc.setFont("Amiri"); // Use the custom font
-  //   doc.setFontSize(14);
+    doc.addFont("Amiri-Italic-italic.ttf", "Amiri", "normal"); // Ensure the font name matches your converted file
+    doc.setFont("Amiri"); // Use the custom font
+    doc.setFontSize(14);
 
-  //   // Add image at the top (centered or aligned as needed)
-  //   const imgWidth = 50; // Adjust the width of the image
-  //   const imgHeight = 20; // Adjust the height of the image
-  //   const pageWidth = doc.internal.pageSize.width; // Get page width for centering
-  //   const xPos = (pageWidth - imgWidth) / 2; // Center the image horizontally
-  //   doc.addImage(tmp, "JPEG", xPos, 10, imgWidth, imgHeight);
+    // Add image at the top (centered or aligned as needed)
+    const imgWidth = 50; // Adjust the width of the image
+    const imgHeight = 20; // Adjust the height of the image
+    const pageWidth = doc.internal.pageSize.width; // Get page width for centering
+    const xPos = (pageWidth - imgWidth) / 2; // Center the image horizontally
+    doc.addImage(tmp, "JPEG", xPos, 10, imgWidth, imgHeight);
 
-  //   doc.text("BIG MONEY BUSINESS", 10, 10);
-  //   doc.text("العقد الإلكتروني", 10, 20);
+    doc.text("BIG MONEY BUSINESS", 10, 10);
+    doc.text("العقد الإلكتروني", 10, 20);
 
-  //   doc.setFontSize(12);
-  //   doc.text(`التاريخ: ${userInfo.createdAt}`, 10, 30);
-  //   doc.text(`الاسم الكامل للعميل: ${userInfo.nom} ${userInfo.prenom}`, 10, 40);
-  //   doc.text(`رقم الهاتف المحمول: ${userInfo.tel}`, 10, 50);
-  //   doc.text(`معلومات الحساب: ${userInfo._id}`, 10, 60);
-  //   doc.text(` رقم ألهوية: ${userInfo.cin}`, 10, 70);
+    doc.setFontSize(12);
+    doc.text(`التاريخ: ${userInfo.createdAt}`, 10, 30);
+    doc.text(`الاسم الكامل للعميل: ${userInfo.nom} ${userInfo.prenom}`, 10, 40);
+    doc.text(`رقم الهاتف المحمول: ${userInfo.tel}`, 10, 50);
+    doc.text(`معلومات الحساب: ${userInfo._id}`, 10, 60);
+    doc.text(` رقم ألهوية: ${userInfo.cin}`, 10, 70);
 
-  //   doc.text(`اسم الحساب: ${userInfo.pseudo}`, 10, 80);
-  //   doc.text(`المبلغ المدفوع: 43$+الرسوم`, 10, 90);
-  //   doc.text("المنتج: حساب متجر إلكتروني", 10, 100);
+    doc.text(`اسم الحساب: ${userInfo.pseudo}`, 10, 80);
+    doc.text(`المبلغ المدفوع: 43$+الرسوم`, 10, 90);
+    doc.text("المنتج: حساب متجر إلكتروني", 10, 100);
 
-  //   doc.setFontSize(11);
-  //   doc.text(
-  //     "لقد قمت بتأكيد عملية الشراء المذكورة أعلاه. وتؤكد اشتراكك في خطة التسويق الخاصة بنا،",
-  //     10,
-  //     110
-  //   );
-  //   doc.text(
-  //     "والتي تمنحك عمولات وفقًا للجدول الخاص بك. الجميع استثمارات فريقك وسيكون الدفع وفقًا لشريحتك",
-  //     10,
-  //     120
-  //   );
-  //   doc.text(
-  //     "كما أوضحنا في شروط الخدمة الخاصة بنا ولهذا نوفر لك حسابا لإدارة عملك ومعرفة عدد فريقك وفقًا للخطة التي انضممت إليها.",
-  //     10,
-  //     130
-  //   );
+    doc.setFontSize(11);
+    doc.text(
+      "لقد قمت بتأكيد عملية الشراء المذكورة أعلاه. وتؤكد اشتراكك في خطة التسويق الخاصة بنا،",
+      10,
+      110
+    );
+    doc.text(
+      "والتي تمنحك عمولات وفقًا للجدول الخاص بك. الجميع استثمارات فريقك وسيكون الدفع وفقًا لشريحتك",
+      10,
+      120
+    );
+    doc.text(
+      "كما أوضحنا في شروط الخدمة الخاصة بنا ولهذا نوفر لك حسابا لإدارة عملك ومعرفة عدد فريقك وفقًا للخطة التي انضممت إليها.",
+      10,
+      130
+    );
 
-  //   doc.setFontSize(12);
-  //   doc.text("يرجى الملاحظة:", 10, 140);
-  //   doc.setFontSize(11);
-  //   doc.text(
-  //     "1. نحن لا نعدك بأي دخل ولكن نعدك بإطلاق دفعتك دائما كما شرحنا في الخطة التي اشتركت فيها.",
-  //     10,
-  //     150
-  //   );
-  //   doc.text(
-  //     "2. سيتم القاء جميع المحاضرات المذكورة في دورات التدريب عبر تطبيق زوم أو تكون حضورياً.",
-  //     10,
-  //     160
-  //   );
-  //   doc.text(
-  //     "3. المبلغ المذكور أعلاه لا يدخل ضمن الرسوم الجمركية ويتم تعديله وفقاً لأحكام كل بلد.",
-  //     10,
-  //     170
-  //   );
-  //   doc.text(
-  //     "4. إذا لم تجد روابط الدورات أو لم تتمكن من الحضور الدورات التدريب أو دورات الاستثمار اتصل بالشركة مباشرة.",
-  //     10,
-  //     180
-  //   );
+    doc.setFontSize(12);
+    doc.text("يرجى الملاحظة:", 10, 140);
+    doc.setFontSize(11);
+    doc.text(
+      "1. نحن لا نعدك بأي دخل ولكن نعدك بإطلاق دفعتك دائما كما شرحنا في الخطة التي اشتركت فيها.",
+      10,
+      150
+    );
+    doc.text(
+      "2. سيتم القاء جميع المحاضرات المذكورة في دورات التدريب عبر تطبيق زوم أو تكون حضورياً.",
+      10,
+      160
+    );
+    doc.text(
+      "3. المبلغ المذكور أعلاه لا يدخل ضمن الرسوم الجمركية ويتم تعديله وفقاً لأحكام كل بلد.",
+      10,
+      170
+    );
+    doc.text(
+      "4. إذا لم تجد روابط الدورات أو لم تتمكن من الحضور الدورات التدريب أو دورات الاستثمار اتصل بالشركة مباشرة.",
+      10,
+      180
+    );
 
-  //   doc.setFontSize(12);
-  //   doc.text(
-  //     "نحن سعداء باختيارك لـ BIG MONEY BUSINESS وفريقنا جاهز دائماً لخدمتك.",
-  //     10,
-  //     190
-  //   );
-  //   doc.setFontSize(12);
-  //   doc.text("توقيع العميل:", 10, 200);
-  //   doc.setFontSize(12);
-  //   doc.text(
-  //     "(هذه الوثيقة تم انشاؤها تلقائيا ولاتطلب توقيعاً من BMB)",
-  //     10,
-  //     230
-  //   );
-  //   // Save the PDF
-  //   doc.save("contract_preview.pdf");
-  // };
+    doc.setFontSize(12);
+    doc.text(
+      "نحن سعداء باختيارك لـ BIG MONEY BUSINESS وفريقنا جاهز دائماً لخدمتك.",
+      10,
+      190
+    );
+    doc.setFontSize(12);
+    doc.text("توقيع العميل:", 10, 200);
+    doc.setFontSize(12);
+    doc.text(
+      "(هذه الوثيقة تم انشاؤها تلقائيا ولاتطلب توقيعاً من BMB)",
+      10,
+      230
+    );
+    // Save the PDF
+    doc.save("contract_preview.pdf");
+  };
   const markNotificationsAsRead = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/users/mark-notifications-read",
+        "https://bmb-76h1.onrender.com/api/users/mark-notifications-read",
         {
           method: "PUT",
           credentials: "include",
@@ -183,7 +183,7 @@ const Admin = () => {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/users/notifications",
+          "https://bmb-76h1.onrender.com/api/users/notifications",
           {
             method: "GET",
             credentials: "include",
@@ -253,7 +253,7 @@ const Admin = () => {
         if (!userInfo?._id) return;
 
         const response = await axios.get(
-          `http://localhost:3000/api/users/${userInfo._id}/tree-stats`,
+          `https://bmb-76h1.onrender.com/api/users/${userInfo._id}/tree-stats`,
           { withCredentials: true }
         );
 
@@ -392,7 +392,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/users/transfer-points",
+        "https://bmb-76h1.onrender.com/api/users/transfer-points",
         {
           method: "PUT",
           headers: {
