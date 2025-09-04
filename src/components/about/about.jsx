@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.scss";
+import "./about.scss";
 import abt from "../images/slide3.jpeg";
 
 const About = () => {
