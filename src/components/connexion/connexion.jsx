@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useLoginMutation } from "../../slices/usersapiSlice";
@@ -63,6 +63,32 @@ const Connexion = () => {
                 />
                 <button className="form-btn">دخول</button>
               </form>
+            </div>
+            <div className="footer">
+              <button>
+                <Link
+                  to="/Condition"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  شروط الخدمة
+                </Link>
+              </button>
+              <button>
+                <Link
+                  to="/About"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  قصتنا
+                </Link>
+              </button>
+              <button>
+                <Link
+                  to="/Vision"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  رؤيتنا
+                </Link>
+              </button>
             </div>
           </div>
 
