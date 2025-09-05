@@ -154,7 +154,7 @@ const Admin = () => {
   const markNotificationsAsRead = async () => {
     try {
       const response = await fetch(
-        "https://bmb-76h1.onrender.com/api/users/mark-notifications-read",
+        "https://bmb-backend-2.onrender.com/api/users/mark-notifications-read",
         {
           method: "PUT",
           credentials: "include",
@@ -183,7 +183,7 @@ const Admin = () => {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          "https://bmb-76h1.onrender.com/api/users/notifications",
+          "https://bmb-backend-2.onrender.com/api/users/notifications",
           {
             method: "GET",
             credentials: "include",
@@ -253,7 +253,7 @@ const Admin = () => {
         if (!userInfo?._id) return;
 
         const response = await axios.get(
-          `https://bmb-76h1.onrender.com/api/users/${userInfo._id}/tree-stats`,
+          `https://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
           { withCredentials: true }
         );
 
@@ -392,7 +392,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        "https://bmb-76h1.onrender.com/api/users/transfer-points",
+        "https://bmb-backend-2.onrender.com/api/users/transfer-points",
         {
           method: "PUT",
           headers: {
