@@ -33,6 +33,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getUserProfile: builder.query({
+      query: () => ({
+        url: `${USERS_URL}/profile`,
+        credentials: "include", 
+        method: "GET",
+      }),
+    }),
+
     updateTotalIncome: builder.mutation({
       query: (totalIncome) => ({
         url: `${USERS_URL}/total`,
