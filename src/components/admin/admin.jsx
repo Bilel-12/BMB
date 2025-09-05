@@ -434,6 +434,63 @@ const Admin = () => {
   };
 
   // 2. Fonction d'enregistrement modifiée
+  // const submitRegistrationHandler = async (e) => {
+  //   e.preventDefault();
+
+  //   if (password !== confirmPassword) {
+  //     toast.error("كلمات المرور غير متطابقة");
+  //     return;
+  //   }
+
+  //   try {
+  //     const res = await register({
+  //       nom,
+  //       prenom,
+  //       pseudo,
+  //       cin,
+  //       email,
+  //       tel,
+  //       createdBy: userInfo.pseudo,
+  //       points,
+  //       password,
+  //       parentId: userInfo._id,
+  //       position: position
+  //     }).unwrap();
+
+  //     // ✅ MISE À JOUR IMMÉDIATE DES STATISTIQUES DANS REDUX
+  //     const updatedUserInfo = {
+  //       ...userInfo,
+  //       // Mettre à jour le compteur de la première génération
+  //       createdByUserCount: (userInfo.createdByUserCount || 0) + 1,
+  //       // Recalculer les points totaux si nécessaire
+  //       allpoints: userInfo.allpoints + (parseFloat(items[0]?.wallet) || 0)
+  //     };
+
+  //     // Mettre à jour Redux store
+  //     dispatch(setCredentials(updatedUserInfo));
+
+  //     // ✅ METTRE À JOUR AUSSI LES GÉNÉRATIONS LOCALEMENT
+  //     setGenerations(prevGenerations => {
+  //       return prevGenerations.map(gen => {
+  //         if (gen.generation === "الجيل الأول") {
+  //           return {
+  //             ...gen,
+  //             [position === "right" ? "rightPartners" : "leftPartners"]:
+  //               gen[position === "right" ? "rightPartners" : "leftPartners"] + 1
+  //           };
+  //         }
+  //         return gen;
+  //       });
+  //     });
+
+  //     toast.success("تم تسجيل الحساب بنجاح");
+  //     toggleFormPopup();
+  //     setIsModalRegisterOpen(false);
+
+  //   } catch (err) {
+  //     toast.error(err?.data?.message || err.error);
+  //   }
+  // };
   const submitRegistrationHandler = async (e) => {
     e.preventDefault();
 
@@ -443,6 +500,7 @@ const Admin = () => {
     }
 
     try {
+      // 1️⃣ Appel à l'API pour créer l'utilisateur
       const res = await register({
         nom,
         prenom,
@@ -457,19 +515,16 @@ const Admin = () => {
         position: position
       }).unwrap();
 
-      // ✅ MISE À JOUR IMMÉDIATE DES STATISTIQUES DANS REDUX
-      const updatedUserInfo = {
-        ...userInfo,
-        // Mettre à jour le compteur de la première génération
-        createdByUserCount: (userInfo.createdByUserCount || 0) + 1,
-        // Recalculer les points totaux si nécessaire
-        allpoints: userInfo.allpoints + (parseFloat(items[0]?.wallet) || 0)
-      };
+      // 2️⃣ Récupérer les données mises à jour depuis la DB
+      const updatedUserFromDB = await fetch(`${USERS_URL}/${userInfo._id}`, {
+        credentials: "include",
+      }).then(r => r.json());
 
-      // Mettre à jour Redux store
-      dispatch(setCredentials(updatedUserInfo));
+      // 3️⃣ Mettre à jour Redux et LocalStorage
+      dispatch(setCredentials(updatedUserFromDB));
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserFromDB));
 
-      // ✅ METTRE À JOUR AUSSI LES GÉNÉRATIONS LOCALEMENT
+      // 4️⃣ Mettre à jour aussi les générations dans l'UI immédiatement
       setGenerations(prevGenerations => {
         return prevGenerations.map(gen => {
           if (gen.generation === "الجيل الأول") {
