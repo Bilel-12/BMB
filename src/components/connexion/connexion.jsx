@@ -64,31 +64,34 @@ const Connexion = () => {
                 <button className="form-btn">دخول</button>
               </form>
             </div>
-            <div className="footer d-flex justify-content-center align-items-center">
-              <button className="me-3 btn btn-primary ">
-                <Link
-                  to="/Condition"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  شروط الخدمة
-                </Link>
-              </button>
-              <button className="me-3 btn btn-primary ">
-                <Link
-                  to="/About"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  قصتنا
-                </Link>
-              </button>
-              <button className="me-3 btn btn-primary ">
-                <Link
-                  to="/Vision"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  رؤيتنا
-                </Link>
-              </button>
+            <div className=" d-flex justify-content-center align-items-center">
+
+              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+
+                to="/Condition"
+
+              >
+                شروط الخدمة
+              </Link>
+
+
+              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+
+                to="/About"
+
+              >
+                قصتنا
+              </Link>
+
+
+              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+
+                to="/Vision"
+
+              >
+                رؤيتنا
+              </Link>
+
             </div>
           </div>
 
