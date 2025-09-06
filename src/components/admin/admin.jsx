@@ -872,7 +872,9 @@ const Admin = () => {
                 <div className="icon-wrapper icon-wrapper-warning rounded-circle">
                   <BiWallet className="text-white" size={32} />
                 </div>
-                <h2 className="fw-bold mb-2 ">{pointInfo?.points >= 90 ? userInfo?.points : 0}   د.ت</h2>
+
+                <h2 className="fw-bold mb-2 ">{pointInfo?.points >= 90 ? pointInfo?.points : 0}   د.ت</h2>
+
 
 
               </div>
