@@ -64,9 +64,9 @@ const Connexion = () => {
                 <button className="form-btn">دخول</button>
               </form>
             </div>
-            <div className=" d-flex justify-content-center align-items-center">
+            <div className=" d-flex justify-content-center align-items-center gap-2">
 
-              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+              <Link className="btn btn-secondary text-white d-inline-flex align-items-center"
 
                 to="/Condition"
 
@@ -75,7 +75,7 @@ const Connexion = () => {
               </Link>
 
 
-              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+              <Link className="btn btn-secondary text-white d-inline-flex align-items-center"
 
                 to="/About"
 
@@ -84,7 +84,7 @@ const Connexion = () => {
               </Link>
 
 
-              <Link className="btn btn-elegant text-white d-inline-flex align-items-center"
+              <Link className="btn btn-secondary text-white d-inline-flex align-items-center"
 
                 to="/Vision"
 
@@ -96,7 +96,7 @@ const Connexion = () => {
           </div>
 
           {/* Colonne de l'animation - cachée sur mobile */}
-          <div className="d-none d-md-block col-md-7 bg-light" style={{ minHeight: "100vh" }}>
+          <div className="d-none d-lg-block col-lg-7 bg-light" style={{ minHeight: "100vh" }}>
             <Lottie
               animationData={animationData}
               loop={true}
