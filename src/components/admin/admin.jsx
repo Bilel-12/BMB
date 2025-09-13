@@ -655,7 +655,7 @@ const Admin = () => {
                 </h2>
                 <div className="responsive-text">
                   <Typewriter
-                    words={['انضم إلى عائلة متكاملة من الناجحين وحقق أحلامك في عالم البزنس مودل!']}
+                    words={['انت في عائة متكاملة معا نسعى الى التطور و التقدم د']}
                     loop
                     cursor
                     cursorStyle="_"
