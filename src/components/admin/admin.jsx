@@ -381,7 +381,7 @@ const Admin = () => {
     e.preventDefault();
 
     const recipientId =
-      userInfo.role === "admin" ? partnerId : "68c280753814846bdf1bd67b";
+      userInfo.role === "admin" ? partnerId : "67544116d2f85f101f7eef43";
 
     const data = {
       senderPseudo: userInfo.pseudo,
@@ -421,7 +421,7 @@ const Admin = () => {
       setReload(prev => !prev);
 
     } catch (error) {
-      toast.error("خطا في ادخال البيانات");
+      toast.error("!الرجاء التثبت من البيانات");
     }
   };
 
