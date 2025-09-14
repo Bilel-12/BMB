@@ -26,7 +26,7 @@ import { BiBell, BiEdit, BiLeftArrow, BiLogOut, BiRightArrow, BiWallet } from "r
 import { Typewriter } from "react-simple-typewriter";
 import { FiFileText } from "react-icons/fi";
 import { Modal } from "antd";
-import Swal from "sweetalert2";
+
 const Admin = () => {
   // State for form fields
   const [nom, setNom] = useState("");
@@ -470,21 +470,7 @@ const Admin = () => {
 
     } catch (err) {
 
-      if (err?.data?.message == "لا يمكنك إضافة مستخدم جديد، الحد الأقصى للجيل هو 5.") {
-        Swal.fire({
-          icon: "error",
-
-          text: `${err?.data?.message}`
-
-        });
-        setIsModalRegisterOpen(false);
-
-      }
-      else {
-        toast.error(err?.data?.message || err.error || "حدث خطأ أثناء التسجيل");
-
-      }
-
+      toast.error(err?.data?.message || err.error || "حدث خطأ أثناء التسجيل");
 
     }
   };
