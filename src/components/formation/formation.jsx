@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FaRocket } from "react-icons/fa";
 import './formation.scss'
 const Formation = () => {
- 
+
   const [isVisible, setIsVisible] = useState({});
 
 
@@ -36,11 +36,16 @@ const Formation = () => {
       ],
     },
     {
-      title: "مونشن جرافيك",
+      title: "عالم الابداع",
       icon: "🎬",
       gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       items: [
-        { name: "دورة التصميم", url: "https://t.me/+JSyiLmvr6mlkZjk0", icon: "🎭" },
+        { name: "دورة التصميم", url: "https://docs.google.com/document/d/1iC5l-2k0lrygZu077rNK1A4mIcjOTCx-JDUzp3zYN0g/edit?usp=drivesdk", icon: "🎭" },
+        { name: "التصميم مع دفنشي", url: "https://docs.google.com/document/d/157wCwe6vk2QWsqvg6YJO4HVVr6jcNXzgeDVNZg-di0A/edit?usp=drivesdk", icon: "💻🧾" },
+
+        { name: "التحارة الالكترونية الدليل", url: "https://docs.google.com/document/d/1GyxGqwU8B5bYUPkbRX6y1nwaTNuf5QvA5s7itFF4jAo/edit?usp=drivesdk", icon: "💵💵" },
+        { name: "التجارة الألكترونية 1", url: "https://docs.google.com/document/d/1PEW0tO122PCnUrVyJzX41Q75LzrMNWlo9Z0gZ4PDS98/edit?usp=drivesdk", icon: "💵💵" },
+        { name: "التجارة الألكترونية 2", url: "https://docs.google.com/document/d/1LXhk4UMnpBBLpkn0Mq4YpMTgEyf1r6-Pg1zQYvbg3-M/edit?usp=drivesdk", icon: "💵💵" },
       ],
     },
     {
@@ -49,10 +54,10 @@ const Formation = () => {
       gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
       items: [
         { name: "الكتاب المعلم", url: "https://mega.nz/folder/UitQiSCJ#8Tc3K_auREcs0mRTxflkRg", icon: "📚" },
-        { name: "A1 مستوى", url: "https://docs.google.com/document/d/13gzuRtVRcB5PiQteDot94SCYXoT31B9Z/edit?usp=drivesdk&ouid=100718508405275022523&rtpof=true&sd=true", icon: "⭐" },
-        { name: "A2 مستوى", url: "https://docs.google.com/document/d/1dKUReIhq0pf1PC1gBaBtY49jAU8GcKI84xtyg8Msn1c/edit?usp=drivesdk", icon: "⭐⭐" },
-        { name: "تعلم الحوار", url: "https://docs.google.com/document/d/1vOE3X9wS9uMGL0BSshNNRm8edjLN5UZ-/edit?usp=drivesdk&ouid=100718508405275022523&rtpof=true&sd=true", icon: "💬" },
-        { name: "تعلم الكلمات", url: "https://docs.google.com/document/d/1zll84PUCAzrrxYd2bYkgbXw4Cq5OljdytnMkfKyosRw/edit?usp=drivesdk", icon: "📝" },
+        { name: "المستوى الاول", url: "https://docs.google.com/document/d/13gzuRtVRcB5PiQteDot94SCYXoT31B9Z/edit?usp=drivesdk&ouid=100718508405275022523&rtpof=true&sd=true", icon: "⭐" },
+        { name: "المستوى الثاني", url: "https://docs.google.com/document/d/1uYiLlH-2YiQ-YdEIvi_4GKmVpFZwqaV07F2x7rbYJVQ/edit?usp=drivesdk", icon: "⭐⭐" },
+        { name: " المستوى الثالث", url: "https://docs.google.com/document/d/1HEs9h_hEj37dIOGJh6pze0RIC6AGA1Yf-VydN9JzTqw/edit?usp=drivesdk", icon: "💬" },
+        { name: " المستوى المتقدم", url: "https://docs.google.com/document/d/1nJ3UNlPIzLWnTLKcg1rPnVnvdiGYWkgPiPeLFBfC8r8/edit?usp=drivesdk", icon: "📝" },
         { name: "Grammar", url: "https://drive.google.com/file/d/1Y0Wooo6SEu_72RyRsAy85DnqNGQfhTll/view?usp=drivesdk", icon: "📖" },
         { name: "Grammar+ مستوى متقدم", url: "https://drive.google.com/file/d/1TUM74iomrLK9PMD5dFiDcO-3fPt7rC_C/view?usp=drivesdk", icon: "🎯" },
         { name: "B1+ مستوى متقدم", url: "https://drive.google.com/file/d/1ShFVS0_gGIvmIYBaHng-9HYmaOQiMdCL/view?usp=drivesdk", icon: "🏆" },
@@ -63,8 +68,8 @@ const Formation = () => {
       icon: "🧩",
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       items: [
-        { name: "اكتشف قدراتك", url: "https://docs.google.com/document/d/1QOTWsEYRqFeLUJPiO4iWD6CNuU8tOqvoR-hBjOwUilQ/edit?usp=drivesdk", icon: "🔍" },
-        { name: "دليلك", url: "https://drive.google.com/file/d/1UnQ3eD0HAXTA0kQ0ydcs_WsK4hEe4cDH/view?usp=drivesdk", icon: "🧭" },
+        { name: "اكتشف قدراتك", url: "https://docs.google.com/document/d/1Rtmwd0kThzvPZN6BnzoA_3RHbxrg_Ws0Ulz9PE3raW8/edit?usp=drivesdk", icon: "🔍" },
+        { name: "دليلك", url: "https://docs.google.com/document/d/1QOTWsEYRqFeLUJPiO4iWD6CNuU8tOqvoR-hBjOwUilQ/edit?usp=drivesdk", icon: "🧭" },
       ],
     },
     {
@@ -84,6 +89,9 @@ const Formation = () => {
         { name: "تعلم كيف تتعلم", url: "https://docs.google.com/document/d/1gJJ3noOPbKyrW-dA4zAYL11YGhP99n64EI3gMFzdW4Q/edit?usp=drivesdk", icon: "💡" },
         { name: "منطقة الراحة", url: "https://drive.google.com/file/d/1b8mVuYLeu44uHqUTFwCd6eoyCv_sj_SB/view?usp=drivesdk", icon: "🌟" },
         { name: "طور من نفسك", url: "https://drive.google.com/file/d/1XXl3nBD_86v3dBnJU7XLBLqgGH-IDQuo/view?usp=drivesdk", icon: "📈" },
+        { name: "ادارة التسويق", url: "https://drive.google.com/file/d/17LefoD7WJW8f6Fjnz-5sjdk-wvlCQiae/view?fbclid=IwdGRjcAMr-RFjbGNrAyv5DWV4dG4DYWVtAjExAAEewZuBlUAtQhaZR5LH_V38jHOnBCM7x7oOTEdxb408tjj1_LkLcHa4XYh4dp4_aem_7rlQyImvmrLhBb8y6kjyDw", icon: "🔊" },
+        { name: "مقتطفات", url: "https://drive.google.com/drive/mobile/folders/1PcGe9g-Yc92tXoi2Ced8hRKlESnFMx79?fbclid=IwdGRjcAMr959jbGNrAyv3gGV4dG4DYWVtAjExAAEe2HnR7mBzEZZxFtgO_qd4QG-78jDhS2tNWZraB44vtvj2dEKUhZv2H375ZNc_aem_snsy9CmRRjSY_EIgySfE4w", icon: "🧾" },
+        { name: "ادارة الازمات", url: "https://drive.google.com/file/d/1yIn2waxs2OihqzVPebU8gltpdh4YEw3C/view?fbclid=IwdGRjcAMr-BRjbGNrAyv35mV4dG4DYWVtAjExAAEdNvca31U6nFPIPK8fQtZwOoFNYmtlL00jHWQsRuuGXPf1X0maWCAh7D2Y_aem_AccB0GEstsjFzgTR1IPlAttqHBnYqcPehO1gx0LVZjrqanydH9GdVXNVmXxeNwC5Xwr532j-KRCj2n94euGBwOrG", icon: "🕕" },
       ],
     },
     {
@@ -91,23 +99,21 @@ const Formation = () => {
       icon: "🇫🇷",
       gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
       items: [
-        { name: "FR1", url: "https://drive.google.com/file/d/1XZ5XQZfT1dwNik51KEUjz4Zjjd1ycDOF/view?usp=drivesdk", icon: "1️⃣" },
-        { name: "FR2", url: "https://drive.google.com/file/d/1Xd24fvalk2v_r1M5Jhfnng0jsp6nRlbE/view?usp=drivesdk", icon: "2️⃣" },
-        { name: "FR3", url: "https://drive.google.com/file/d/1XOrlUu-SwPCjdnQ-MsM_Ov4Nxwk9Zbfi/view?usp=drivesdk", icon: "3️⃣" },
-        { name: "FR4", url: "https://drive.google.com/file/d/1Xn0UYoqNZTwnDrL1vR8eSuj4Rn5s3Fhm/view?usp=drivesdk", icon: "4️⃣" },
-        { name: "FR5", url: "https://drive.google.com/file/d/1XlXrER8b13zy_PB4B6LFjaBG9r1kc0DS/view?usp=drivesdk", icon: "5️⃣" },
+        { name: "مستوى الاول", url: "https://docs.google.com/document/d/1tUOcRi_zBgaeXZOW5KrgPV77BjLoaolQci0ZYJkG50g/edit?usp=drivesdk", icon: "⭐" },
+        { name: "مستوى الثاني", url: "https://docs.google.com/document/d/1Jmaso_6HMQ-b9l9fDSBcddFxS--d_2gbBNuS4eh6uoc/edit?usp=drivesdk", icon: "⭐⭐" },
+        { name: "مستوى الثالث", url: "https://docs.google.com/document/d/1haCsOKQHSQdUfQR1Lzv3rO5QjmBovTBhfAqITVe8EX0/edit?usp=drivesdk", icon: "⭐⭐⭐" },
+        { name: "مستوى متقدم", url: "https://docs.google.com/document/d/1B7hNzadGVabmqCeNcP8HN8WKsBKWVJEAXyVBN1VDiKc/edit?usp=drivesdk", icon: "⭐⭐⭐⭐" },
       ],
     },
-
     {
       title: "اللغة الالمانية",
       icon: "🇩🇪",
       gradient: "linear-gradient(135deg, #a8edea 0%, #a8a2a4ff 100%)",
       items: [
-        { name: "مستوى الاول", url: "https://mega.nz/folder/5HNz2AZS#j_3-z82aNvjSrQrPQx3MuQ", icon: "⭐" },
-        { name: "مستوى الثاني", url: "https://mega.nz/folder/Yf0XzBKA#ODuHzZ9gKpkqHxs-CUZABA", icon: "⭐⭐" },
-        { name: "مستوى الثالث", url: "https://mega.nz/folder/MH0m1bDZ#th9UR7BczMqfnkbijyjnKQ", icon: "⭐⭐⭐" },
-        { name: "مستوى متقدم", url: "https://mega.nz/folder/EX0FkAAb#0jsLjqCsEgsr9HaHP1K8YA", icon: "⭐⭐⭐⭐" },
+        { name: "مستوى الاول", url: "https://docs.google.com/document/d/1d-o27GYGrHvUqxduo_2a1G1oQBfOI2ij27n73His1cU/edit?usp=drivesdk", icon: "⭐" },
+        { name: "مستوى الثاني", url: "https://docs.google.com/document/d/1g1BIToVVoAff2Hs6r4LAeGahTl5-lUiNQNZB3dnOCdY/edit?usp=drivesdk", icon: "⭐⭐" },
+        { name: "مستوى الثالث", url: "https://docs.google.com/document/d/1__tOSiN-txO-Y4dLDL6OFMVcGR_eITQ1TwrvvmyQGXM/edit?usp=drivesdk", icon: "⭐⭐⭐" },
+        { name: "مستوى متقدم", url: "https://docs.google.com/document/d/1p9oZ0K-dqTXZfSwWNkptCXFXDOqN2OyIdFV8ySUlEKA/edit?usp=drivesdk", icon: "⭐⭐⭐⭐" },
       ],
     },
     {
@@ -115,17 +121,20 @@ const Formation = () => {
       icon: "🇮🇹",
       gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       items: [
-        { name: " احترف اللغة", url: "https://mega.nz/folder/cSc2UIpS#0-sQFBhkN0p-I5UXay5bRw", icon: "📚" },
+        { name: "مستوى الاول", url: "https://docs.google.com/document/d/1qEQOTuCGgdAWk8mZcfkKdUiiHCPLttsy7QZfEeAF8vs/edit?usp=drivesdk", icon: "⭐" },
+        { name: "مستوى الثاني", url: "https://docs.google.com/document/d/1-9TBerL35gmsFIqpO_IbPPh6TSiFkVAJYDNpT7S0mCw/edit?usp=drivesdk", icon: "⭐⭐" },
+        { name: "مستوى الثالث", url: "https://docs.google.com/document/d/1Pj89IoFkk804Jl_xq3sGT7bPejyvUBX4qZrvD2ClYcw/edit?usp=drivesdk", icon: "⭐⭐⭐" },
+        { name: "مستوى متقدم", url: "https://docs.google.com/document/d/1AZJ8fW2X_9uwFCnCDS-jzR_5p3hkz3oMM_YhZkzVD7g/edit?usp=drivesdk", icon: "⭐⭐⭐⭐" },
       ],
     },
     {
       title: " الاكسال",
-      icon: "📝" ,
+      icon: "📝",
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       items: [
         { name: "  تعلم الاكسال", url: "https://docs.google.com/document/d/1qC1YrK6IpfVXMa-Euld0P9_zPR-pbF6In5_2aLB19wk/edit?usp=drivesdk", icon: "📖" },
       ],
-    }
+    },
   ];
 
 
@@ -500,8 +509,8 @@ const Formation = () => {
         <div style={styles.floatingElement2}></div>
       </div>
 
-   
-  {/* Hero Section */}
+
+      {/* Hero Section */}
       <div className="hero-section   d-flex flex-col justify-content-center align-items-center ">
 
         <div className="hero-content card  bg-transparent rounded-5 w-100" >
@@ -511,16 +520,16 @@ const Formation = () => {
           </div>
 
           <h1 className="main-title display-2 fw-bold mb-4">
-          
+
             <span className="text-white">BMB</span>
           </h1>
-          <p className="lead text-white-50 mb-4 fs-4"> 
+          <p className="lead text-white-50 mb-4 fs-4">
             عالم البزنس مودل بين يديك
           </p>
           <p className="text-white-50 mb-5 fs-4">
             اكتشف أسرار النجاح في عالم الأعمال والتكنولوجيا مع منصتنا المتطورة
           </p>
-          
+
 
 
 
@@ -543,13 +552,13 @@ const Formation = () => {
 
         </div>
       </div>
-    
- 
 
 
 
 
-  
+
+
+
       {/* Course Sections */}
       <section style={styles.sectionsContainer}>
         {links.map((section, sectionIndex) => (
@@ -692,11 +701,14 @@ const Formation = () => {
         </div>
       </section>
 
-    
 
-   
+
+
     </div>
   );
 };
 
 export default Formation;
+
+
+
