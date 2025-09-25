@@ -46,7 +46,12 @@ const Formation = () => {
         { name: "اساسيات الجرافيك ديزاين", url: "https://mega.nz/folder/roRmTASb#mN2jtMGDNRBLrCQLCHWTSg", icon: "💻🧾" },
         { name: "دورات ادوبي", url: "https://mega.nz/folder/2k4RXKBR#QuP2lAk94udDjj89R6B7lQ", icon: "💻🧾" },
         { name: "دورات الاعلانات", url: "https://mega.nz/folder/awoAyazJ#v9Sli_B4rMQPSekE7S9nlQ", icon: "💻🧾" },
-
+      ],
+    },
+    {
+      title: "عالم الاعمال الحرة",
+      icon: "💵💻",
+      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
         { name: "التجارة الالكترونية الدليل", url: "https://docs.google.com/document/d/1GyxGqwU8B5bYUPkbRX6y1nwaTNuf5QvA5s7itFF4jAo/edit?usp=drivesdk", icon: "💵💵" },
         { name: "التجارة الألكترونية 1", url: "https://docs.google.com/document/d/1PEW0tO122PCnUrVyJzX41Q75LzrMNWlo9Z0gZ4PDS98/edit?usp=drivesdk", icon: "💵💵" },
         { name: "التجارة الألكترونية 2", url: "https://docs.google.com/document/d/1LXhk4UMnpBBLpkn0Mq4YpMTgEyf1r6-Pg1zQYvbg3-M/edit?usp=drivesdk", icon: "💵💵" },
