@@ -43,6 +43,10 @@ const Formation = () => {
         { name: "دورة التصميم", url: "https://docs.google.com/document/d/1iC5l-2k0lrygZu077rNK1A4mIcjOTCx-JDUzp3zYN0g/edit?usp=drivesdk", icon: "🎭" },
         { name: "التصميم مع دفنشي", url: "https://docs.google.com/document/d/157wCwe6vk2QWsqvg6YJO4HVVr6jcNXzgeDVNZg-di0A/edit?usp=drivesdk", icon: "💻🧾" },
 
+        { name: "اساسيات الجرافيك ديزاين", url: "https://mega.nz/folder/roRmTASb#mN2jtMGDNRBLrCQLCHWTSg", icon: "💻🧾" },
+        { name: "دورات ادوبي", url: "https://mega.nz/folder/2k4RXKBR#QuP2lAk94udDjj89R6B7lQ", icon: "💻🧾" },
+        { name: "دورات الاعلانات", url: "https://mega.nz/folder/awoAyazJ#v9Sli_B4rMQPSekE7S9nlQ", icon: "💻🧾" },
+
         { name: "التجارة الالكترونية الدليل", url: "https://docs.google.com/document/d/1GyxGqwU8B5bYUPkbRX6y1nwaTNuf5QvA5s7itFF4jAo/edit?usp=drivesdk", icon: "💵💵" },
         { name: "التجارة الألكترونية 1", url: "https://docs.google.com/document/d/1PEW0tO122PCnUrVyJzX41Q75LzrMNWlo9Z0gZ4PDS98/edit?usp=drivesdk", icon: "💵💵" },
         { name: "التجارة الألكترونية 2", url: "https://docs.google.com/document/d/1LXhk4UMnpBBLpkn0Mq4YpMTgEyf1r6-Pg1zQYvbg3-M/edit?usp=drivesdk", icon: "💵💵" },
