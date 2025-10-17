@@ -18,7 +18,7 @@ const Connexion = () => {
   const { userInfo } = useSelector((state) => state.auth);
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate("/admin");
     }
   }, [navigate, userInfo]);
   const onSubmit = async (e) => {
@@ -26,7 +26,7 @@ const Connexion = () => {
     try {
       const res = await login({ pseudo, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigate("/");
+      navigate("/admin");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -96,7 +96,7 @@ const Connexion = () => {
           </div>
 
           {/* Colonne de l'animation - cachée sur mobile */}
-          <div className="d-none d-md-block col-md-7 bg-light" style={{ minHeight: "100vh" }}>
+          <div className="d-none d-lg-block col-lg-7 bg-light" style={{ minHeight: "100vh" }}>
             <Lottie
               animationData={animationData}
               loop={true}
