@@ -276,23 +276,24 @@ const COURSE_SECTIONS = [
         icon: "⭐⭐⭐⭐"
       },
 
+
+
+
+    ],
+  },
+  {
+    title: " تحليل البيانات",
+    icon: "📝",
+    gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    items: [
+      { name: "  تعلم الاكسال", url: "https://mega.nz/folder/CsZAGIgZ#hwWFGqPZG96sz1eqaHcWiA", icon: "📖" },
+      { name: "تحليل البيانات excel", url: "https://mega.nz/folder/e1pnzLRJ#EE9WnTpOLdlEaIHf7xTKcg", icon: "📖" },
+      { name: "power BI", url: "https://mega.nz/folder/PtZC1B5Y#NplcrDLrp6A4LZr8oIF3VQ", icon: "📖" },
       {
-        title: " تحليل البيانات",
-        icon: "📝",
-        gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-        items: [
-          { name: "  تعلم الاكسال", url: "https://mega.nz/folder/CsZAGIgZ#hwWFGqPZG96sz1eqaHcWiA", icon: "📖" },
-          { name: "تحليل البيانات excel", url: "https://mega.nz/folder/e1pnzLRJ#EE9WnTpOLdlEaIHf7xTKcg", icon: "📖" },
-          { name: "power BI", url: "https://mega.nz/folder/PtZC1B5Y#NplcrDLrp6A4LZr8oIF3VQ", icon: "📖" },
-          {
-            name: "python تحليل البيانات",
-            videoUrl: "https://mega.nz/folder/SQ8URBQD#Qgz_gLfUlkL28-VIdCYDeA",
-            url: "https://docs.google.com/document/d/19tYzVfYI8v0o0NHuKJVBG0V3dSxtV2cWxzTmAGlzOTI/edit?usp=drivesdk", icon: "📖"
-          },
-        ],
+        name: "python تحليل البيانات",
+        videoUrl: "https://mega.nz/folder/SQ8URBQD#Qgz_gLfUlkL28-VIdCYDeA",
+        url: "https://docs.google.com/document/d/19tYzVfYI8v0o0NHuKJVBG0V3dSxtV2cWxzTmAGlzOTI/edit?usp=drivesdk", icon: "📖"
       },
-
-
     ],
   },
 
