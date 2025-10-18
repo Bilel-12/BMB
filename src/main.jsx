@@ -23,6 +23,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import NotFound from "./components/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,14 @@ const router = createBrowserRouter(
           <GuestRoute>
             <Connexion />
           </GuestRoute>
+        }
+      />
+      <Route
+        path="*"
+        element={
+
+          <NotFound />
+
         }
       />
 
