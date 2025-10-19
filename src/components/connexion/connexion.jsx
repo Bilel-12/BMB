@@ -18,7 +18,7 @@ const Connexion = () => {
   const { userInfo } = useSelector((state) => state.auth);
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate("/admin");
     }
   }, [navigate, userInfo]);
   const onSubmit = async (e) => {
