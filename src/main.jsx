@@ -11,8 +11,6 @@ import Formation from "./components/formation/formation.jsx";
 import Condition from "./components/condition/condition.jsx";
 import Vision from "./components/vision/vision.jsx";
 import About from "./components/about/about.jsx";
-
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
@@ -25,39 +23,12 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-
-
-      <Route
-        path="login"
-        element={
-
-          <Connexion />
-
-        }
-      />
-
-
-      <Route
-        index
-        element={
-
-          <Admin />
-
-        }
-      />
-
-      <Route
-        path="formation"
-        element={
-
-          <Formation />
-
-        }
-      />
-
-      <Route path="condition" element={<Condition />} />
-      <Route path="vision" element={<Vision />} />
-      <Route path="about" element={<About />} />
+      <Route index={true} path="/" element={<Connexion />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/condition" element={<Condition />} />
+      <Route path="/formation" element={<Formation />} />
+      <Route path="/vision" element={<Vision />} />
+      <Route path="/about" element={<About />} />
 
     </Route>
   )
