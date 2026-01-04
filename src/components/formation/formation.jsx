@@ -215,7 +215,7 @@ const COURSE_SECTIONS = [
   },
 
   {
-    title: "امن الاختراق تحت البرمجة",
+    title: "امن الاختراق ",
     icon: "🛡️",
     gradient: "linear-gradient(135deg, #5bc17bff 0%, #fee140 100%)",
     items: [
