@@ -96,6 +96,35 @@ const COURSE_SECTIONS = [
         videoUrl: "https://mega.nz/folder/qKYRGZxK#LItzcrVeH1xnDJDNhe5cFg",
         icon: "🧠"
       },
+      {
+        name: "  الذكاء الاصطناعي بلغة بايثون ",
+        url: "https://docs.google.com/document/d/1sYey0m7B_kh12MYM9tmyx9AwPlREvnVetzDyGdnLsnA/edit?usp=drivesdk",
+
+        icon: "🧠"
+      },
+      {
+        name: "  Scikit Learn ",
+        url: "https://docs.google.com/document/d/1Uz7ZjnJ4FVutR1D8WYsBycr8uxS2B3nbAew3S_AJ1pA/edit?usp=drivesdk",
+        videoUrl: "https://mega.nz/folder/rShyTLSY#bCLDX8RskpmWDzv2YJsX4w",
+        icon: "🧠"
+      },
+      {
+        name: "المعالجة اللغوية الطبيعية  ",
+        url: "https://docs.google.com/document/d/1v0ZY_fmDb8oiejyBA_0pUr2x5UejfUji_dfoNKzlr40/edit?usp=drivesdk",
+        icon: "🧠"
+      },
+      {
+        name: "TensorFlow Tutorial",
+        url: "https://docs.google.com/document/d/1E4QAZSuf9VCJXwpG27meytwA47qR6QQlXEgwCPIkJpI/edit?usp=drivesdk",
+        videoUrl: "https://mega.nz/folder/zDgwGSDL#9lB20bpHKScqnbbl1u6H_w",
+        icon: "🧠"
+      },
+      {
+        name: " التعلم الآلي",
+        url: "https://docs.google.com/document/d/1Oq0OIxNdY5he16Ft1PdHcybKMl_UHzvw3uvUO-O9RAg/edit?usp=drivesdk",
+        videoUrl: "https://mega.nz/folder/qKYRGZxK#LItzcrVeH1xnDJDNhe5cFg",
+        icon: "🧠"
+      },
     ],
   },
   {
@@ -110,6 +139,58 @@ const COURSE_SECTIONS = [
         icon: "🎭"
       },
       { name: "التصميم مع دفنشي", url: "https://docs.google.com/document/d/157wCwe6vk2QWsqvg6YJO4HVVr6jcNXzgeDVNZg-di0A/edit?usp=drivesdk", icon: "💻🧾" },
+      {
+        name: "CapCut للهاتف",
+        videoUrl: "https://mega.nz/folder/zVMC1QgS#5uAENkhdh69Gcivm0quizw",
+        icon: "📱"
+      },
+      {
+        name: "CapCut للحاسوب",
+        videoUrl: "https://mega.nz/folder/WQ82kR7L#p5FfYBjfeC13_ffpXmdGLQ",
+        icon: "💻"
+      },
+      {
+        name: "Adobe Premiere Pro",
+        videoUrl: "https://mega.nz/folder/sccHVBYR#AMXWy9RJIDjs7aho4i3GDQ",
+        icon: "🎞️"
+      },
+      {
+        name: "Adobe Illustrator",
+        videoUrl: "https://mega.nz/folder/0IFzSJKR#ogQPu2hYCvmUWVREhvnfmA",
+        icon: "🖊️"
+      },
+      {
+        name: "Adobe After Effects",
+        videoUrl: "https://mega.nz/folder/xQFU1ICR#Zio_YMIavzha0M8-MDP9Hg",
+        icon: "✨"
+      },
+      {
+        name: "Adobe Photoshop",
+        videoUrl: "https://mega.nz/folder/BQ1yWJSA#c1FFAMX3P1jPFdVatQ5GRQ",
+        icon: "🖼️"
+      },
+      {
+        name: "المونتاج بالذكاء الاصطناعي",
+        videoUrl: "https://mega.nz/folder/9M1GDIBa#HRqpiQr_2ZLj86kMLtgG1Q",
+        icon: "🤖"
+      },
+      {
+        name: "كورس التصميم الشامل",
+        videoUrl: "https://mega.nz/folder/0Ms2kZBL#c1iiTj1YtpWoYpcvk_k1zQ",
+        icon: "📚"
+      },
+      {
+        name: "Canva",
+        videoUrl: "https://mega.nz/folder/aQtmzA5S#Q6hpXBnjXu6X-Gq3OnvcoA",
+        icon: "🎨"
+      }
+    ],
+  },
+  {
+    title: "الاعمال الحرة",
+    icon: "💼",
+    gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    items: [
 
       {
         name: "التجارة الالكترونية الدليل",
@@ -119,9 +200,35 @@ const COURSE_SECTIONS = [
       },
       { name: "التجارة الألكترونية 1", url: "https://docs.google.com/document/d/1PEW0tO122PCnUrVyJzX41Q75LzrMNWlo9Z0gZ4PDS98/edit?usp=drivesdk", icon: "💵💵" },
       { name: "التجارة الألكترونية 2", url: "https://docs.google.com/document/d/1LXhk4UMnpBBLpkn0Mq4YpMTgEyf1r6-Pg1zQYvbg3-M/edit?usp=drivesdk", icon: "💵💵" },
+      {
+        name: " التسويق الرقمي ",
+        url: "https://docs.google.com/document/d/12h8BiNUEBUk_IFZ-jerUezGuy5nX2zvBUGSdGw2hR74/edit?usp=drivesdk",
+        icon: "📈"
+      },
+      {
+        name: "الاعلانات الممولة ",
+        videoUrl: "https://mega.nz/folder/6JES1a5Y#8nTGb9jSj2_67_JkficXXg",
+        url: "https://docs.google.com/document/d/1tsoUfVrD-JBolc-dUb98PJenjcAn30x5GI3KU4rxI88/edit?usp=drivesdk",
+        icon: "📢"
+      },
     ],
   },
+
   {
+    title: "امن الاختراق تحت البرمجة",
+    icon: "🛡️",
+    gradient: "linear-gradient(135deg, #5bc17bff 0%, #fee140 100%)",
+    items: [
+      {
+        name: " الامن السيبراني ",
+        videoUrl: "https://mega.nz/folder/WIlG3DjZ#uXOvs7adORZPyvVKZtN44w",
+        icon: "🔐"
+      }
+    ],
+  },
+
+  {
+
     title: "اللغة الانجليزية",
     icon: "🇺🇸",
     gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
@@ -298,7 +405,6 @@ const COURSE_SECTIONS = [
   },
 
 ];
-
 
 // ========== CUSTOM HOOKS ==========
 const useIntersectionObserver = () => {

@@ -482,7 +482,7 @@ const Admin = () => {
   const [pointsToSendsInfo, setPointsToSendsInfo] = useState(null);
   const [totalIncome, setTotalIncome] = useState(0);
   // ajouter  var solde
-  const [solde, setSolde] = useState(0);
+  const [solde, setSolde] = useState(null);
   // set solde par la fonction get  par api  getsolde utilsier
   useEffect(() => {
     const fetchSolde = async () => {
@@ -500,6 +500,7 @@ const Admin = () => {
         }
 
         const data = await res.json();
+        // ✅ on ajoute au solde initial (-330)
         setSolde(data.solde);
       } catch (err) {
         toast.error(err.message);
