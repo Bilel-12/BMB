@@ -25,7 +25,7 @@ import { BiBell, BiEdit, BiLogOut, BiWallet } from "react-icons/bi";
 import { Typewriter } from "react-simple-typewriter";
 import { FiFileText } from "react-icons/fi";
 import { Modal } from "antd";
-import Swal from "sweetalert2";
+
 const Admin = () => {
   // State for form fields
   const [nom, setNom] = useState("");
