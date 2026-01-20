@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaCrown, FaGraduationCap, FaMedal, FaUserPlus } from "react-icons/fa";
 import sealImage from "../images/tmp.jpeg";
 import jsPDF from "jspdf";
@@ -7,8 +7,7 @@ import "../../fonts/Amiri-Italic-italic.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../slices/usersapiSlice";
 import { logout } from "../../slices/authSlice";
-import items from "../Tableau/data.jsx";
-import { FaMoneyBill, FaPercent, FaUsers, FaUser } from "react-icons/fa";
+
 import {
   useRegisterMutation,
   useUpdateUserMutation,
@@ -18,15 +17,15 @@ import {
 
 import { setCredentials } from "../../slices/authSlice";
 import { toast } from "react-toastify";
-import Header from "../Header/Header";
+
 import "./admin.scss";
 import axios from "axios";
-import { BsTrophy, BsWallet } from "react-icons/bs";
-import { BiBell, BiEdit, BiLeftArrow, BiLogOut, BiRightArrow, BiWallet } from "react-icons/bi";
+import { BsTrophy } from "react-icons/bs";
+import { BiBell, BiEdit, BiLogOut, BiWallet } from "react-icons/bi";
 import { Typewriter } from "react-simple-typewriter";
 import { FiFileText } from "react-icons/fi";
 import { Modal } from "antd";
-
+import Swal from "sweetalert2";
 const Admin = () => {
   // State for form fields
   const [nom, setNom] = useState("");
@@ -155,7 +154,7 @@ const Admin = () => {
   const markNotificationsAsRead = async () => {
     try {
       const response = await fetch(
-        "https://bmb-backend-2.onrender.com/api/users/mark-notifications-read",
+        "http://localhost:3000/api/users/mark-notifications-read",
         {
           method: "PUT",
           credentials: "include",
@@ -177,14 +176,15 @@ const Admin = () => {
       markNotificationsAsRead();
     }
   }, [isNotificationVisible]);
-  const [position, setPosition] = useState("left"); // default left
+  const [position, setPosition] = useState("");
+  const [modee, setModee] = useState("normale");
 
   // Toggle functions for popups
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          "https://bmb-backend-2.onrender.com/api/users/notifications",
+          "http://localhost:3000/api/users/notifications",
           {
             method: "GET",
             credentials: "include",
@@ -254,7 +254,7 @@ const Admin = () => {
         if (!userInfo?._id) return;
 
         const response = await axios.get(
-          `https://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
+          `http://localhost:3000/api/users/${userInfo._id}/tree-stats`,
           { withCredentials: true }
         );
 
@@ -268,16 +268,6 @@ const Admin = () => {
 
     fetchGenerations();
   }, [userInfo?._id]);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -339,7 +329,8 @@ const Admin = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate("/");
+      window.localStorage.removeItem("userInfo");
+      navigate("/login");
     } catch (err) {
       console.error(err);
     }
@@ -393,7 +384,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        "https://bmb-backend-2.onrender.com/api/users/transfer-points",
+        "http://localhost:3000/api/users/transfer-points",
         {
           method: "PUT",
           headers: {
@@ -421,7 +412,7 @@ const Admin = () => {
       setReload(prev => !prev);
 
     } catch (error) {
-      toast.error("!الرجاء التثبت من البيانات");
+      toast.error("خطا في ادخال البيانات");
     }
   };
 
@@ -447,13 +438,14 @@ const Admin = () => {
         points,
         password,
         parentId: userInfo._id,
-        position
+        position,
+        modee,
       }).unwrap();
 
 
       // 3️⃣ Refetch les générations depuis le backend pour être à jour
       const response = await axios.get(
-        `https://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
+        `http://localhost:3000/api/users/${userInfo._id}/tree-stats`,
         { withCredentials: true }
       );
 
@@ -470,7 +462,21 @@ const Admin = () => {
 
     } catch (err) {
 
-      toast.error(err?.data?.message || err.error || "حدث خطأ أثناء التسجيل");
+      if (err?.data?.message == "لا يمكنك إضافة مستخدم جديد، الحد الأقصى للجيل هو 5.") {
+        Swal.fire({
+          icon: "error",
+
+          text: `${err?.data?.message}`
+
+        });
+        setIsModalRegisterOpen(false);
+
+      }
+      else {
+        toast.error(err?.data?.message || err.error || "حدث خطأ أثناء التسجيل");
+
+      }
+
 
     }
   };
@@ -484,10 +490,15 @@ const Admin = () => {
   // ajouter  var solde
   const [solde, setSolde] = useState(null);
   // set solde par la fonction get  par api  getsolde utilsier
+  // const hasFetched = useRef(false);
+
   useEffect(() => {
+    // if (hasFetched.current) return;
+    // hasFetched.current = true;
+
     const fetchSolde = async () => {
       try {
-        const res = await fetch(`https://bmb-backend-2.onrender.com/api/users/getsolde`, {
+        const res = await fetch(`http://localhost:3000/api/users/getsolde`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -500,8 +511,9 @@ const Admin = () => {
         }
 
         const data = await res.json();
-        // ✅ on ajoute au solde initial (-330)
+
         setSolde(data.solde);
+
       } catch (err) {
         toast.error(err.message);
       }
@@ -510,10 +522,13 @@ const Admin = () => {
     fetchSolde();
   }, [userInfo, reload]);
 
+
+
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`https://bmb-backend-2.onrender.com/api/users/getuserpoints/${userInfo._id}`, {
+        const res = await fetch(`http://localhost:3000/api/users/getuserpoints/${userInfo._id}`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -544,6 +559,8 @@ const Admin = () => {
   }, [userInfo, reload]);
 
   const [isModalRegisterOpen, setIsModalRegisterOpen] = useState(false);
+
+  const [isCheckedMode, setIsCheckedMode] = useState(true);
   const [isModalUUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const adminId = "68c280753814846bdf1bd67b";
   const generationColors = [
@@ -596,7 +613,6 @@ const Admin = () => {
 
 
         <div className="particles" id="particles">
-
           <header className="header-elegant">
             <div className="container p-2 ">
               <div className="row align-items-center">
@@ -606,9 +622,7 @@ const Admin = () => {
                       <BsTrophy className="text-white" size={22} />
                     </div>
                     <div>
-
                       <h1 className="brand-text mb-1 me-5">B.M.B </h1>
-
                       <p className="mb-0 text-white-100 fs-6">أهلاً بك في عالم الاستثمار المتطور</p>
                     </div>
                   </div>
@@ -654,12 +668,16 @@ const Admin = () => {
               </div>
 
               <div className="mt-3 mt-md-0 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" className="image_welcome"><g fillRule="evenodd" fill="none" id="Page-1"><g fillRule="nonzero" id="059---Money-Bag"><path fill="#f29c1f" d="m23 16.98v-9.98c0-1.66-2.91-3-6.5-3s-6.5 1.34-6.5 3v11.01c-3.36.12-6 1.41-6 2.99v26.23c-2.35.45-4 1.52-4 2.77v5c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3v-2c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3l.5-13z" id="Shape" /><path fill="#f3d55b" d="m54.527 13.355c-.072-.108-1.461-2.092-5.5-3 1.0331933-.84954961 1.6441867-2.10769199 1.673-3.445 0-2.358-2.006-4.417-4.769-4.895-.5372791-.08053169-1.0405693.28263221-1.1334952.81790692s.2585108 1.04682267.7914952 1.15209308c1.798.315 3.111 1.542 3.111 2.925 0 1.638-1.775 2.984-4 3-.8755119.01021562-1.7370699-.21978683-2.491-.665-.4719273-.28691192-1.0870881-.13692731-1.374.33300001-.2869119.47192729-.1369273 1.08708809.335 1.37399999 1.0594655.6270481 2.2688888.9556657 3.5.951.01 0 .017.005.026.005 6.213 0 8.124 2.5 8.176 2.567.200426.2958159.5434432.4622351.8998403.436569.356397-.025666.6720289-.239518.828-.561.155971-.3214819.1285857-.7017531-.0718403-.997569z" id="Shape" /><path fill="#a56a43" d="m45.19 52h-19.19v-12c0-1.66-2.91-3-6.5-3-.8387701-.0034358-1.6759363.0735835-2.5.23v-10.89c1.4565382-3.4367258 3.4852949-6.6015863 6-9.36v-.01c2.0874104-2.3329398 4.5726948-4.2764728 7.34-5.74v-.01c.8551132.5204315 1.8390235.7906603 2.84.78h5.6c1.0050057.0070139 1.9920265-.2665813 2.85-.79 2.18 1.08 12.01 6.72 15.56 21.79 4 17-8 19-12 19z" id="Shape" /><path fill="#fdd7ad" d="m45.19 49c-.5522847 0-1-.4477153-1-1s.4477153-1 1-1c.723 0 4.425-.125 6.376-2.589.9225786-1.3035875 1.4145252-2.8629918 1.407-4.46.0332885-.5485091.4978261-.970453 1.047-.951.2649656.0126906.5140321.1301392.6923876.326499.1783554.1963597.2713838.4555393.2586124.720501-.0084762 2.0150456-.6508108 3.9763353-1.836 5.606-2.524 3.186-7.061 3.347-7.945 3.347z" id="Shape" /><path fill="#805333" d="m46 1.17c.01 2.2-.43 7-3.95 9.75-.1318612.1079533-.2723293.2049432-.42.29-.8579735.5234187-1.8449943.7970139-2.85.79h-5.6c-1.0009765.0106603-1.9848868-.2595685-2.84-.78-.1495192-.0908277-.2931396-.191028-.43-.3-3.52-2.75-3.95-7.55-3.95-9.75.0016568-.33258473.1685567-.6425818.4452874-.8270689.2767306-.18448711.6270741-.21931899.9347126-.0929311 1.28.54 1.71 1.75 3.65 1.75 2.49 0 2.49-2 4.98-2s2.5 2 5 2c1.94 0 2.37-1.22 3.65-1.75.3076385-.12638789.657982-.09155601.9347126.0929311.2767307.1844871.4436306.49448417.4452874.8270689z" id="Shape" /><path fill="#603e26" d="m36.45 11.982c1.164119-1.6359812 2.0400633-3.45889226 2.59-5.39.1491169-.53295478.7020452-.84411688 1.235-.695s.8441169.70204522.695 1.235c-.545409 1.83131833-1.3359015 3.5804932-2.35 5.2l3.34 3.12c.4031679.3783151.423315 1.0118321.045 1.415-.3783151.4031678-1.0118321.423315-1.415.045l-3.59-3.35v3.3c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1v-3.3l-3.58 3.35c-.1844231.1726652-.4273651.2691275-.68.27-.2800466-.0009897-.5474685-.1166316-.74-.32-.3709419-.4048785-.3486888-1.0324134.05-1.41l3.35-3.12c-1.0179074-1.618792-1.8117948-3.36803545-2.36-5.2-.0704836-.2559398-.0363072-.52940237.0949974-.76012341.1313047-.23072105.3489609-.3997642.6050026-.46987659.2546559-.07392838.5283328-.04249768.7595988.08723693.231266.1297346.4007475.34690489.4704012.60276307.5569409 1.93085241 1.4433119 3.7509576 2.62 5.38z" id="Shape" /><path fill="#f0c419" d="m17 21c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.58 2.64-2.87 6-2.99.17-.01.33-.01.5-.01 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#e57e25" d="m23 7v9.98c-2.5147051 2.7584137-4.5434618 5.9232742-6 9.36v-5.34c0-1.66-2.91-3-6.5-3-.17 0-.33 0-.5.01v-11.01c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#f9eab0" d="m13 50c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.25 1.65-2.32 4-2.77.82406367-.1564165 1.66122992-.2334358 2.5-.23 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#f3d55b" d="m13 50v5c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3v-5c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#f3d55b" d="m26 40c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.25 1.65-2.32 4-2.77.8240637-.1564165 1.6612299-.2334358 2.5-.23 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#f0c419" d="m26 40v13c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3v-13c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#fdd7ad" d="m39 27c0 .5522847.4477153 1 1 1s1-.4477153 1-1c0-2.209139-1.790861-4-4-4v-1c0-.5522847-.4477153-1-1-1s-1 .4477153-1 1v1c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4v4c-1.1045695 0-2-.8954305-2-2 0-.5522847-.4477153-1-1-1s-1 .4477153-1 1c0 2.209139 1.790861 4 4 4v1c0 .5522847.4477153 1 1 1s1-.4477153 1-1v-1c2.209139 0 4-1.790861 4-4s-1.790861-4-4-4v-4c1.1045695 0 2 .8954305 2 2zm0 6c0 1.1045695-.8954305 2-2 2v-4c1.1045695 0 2 .8954305 2 2zm-4-4c-1.1045695 0-2-.8954305-2-2s.8954305-2 2-2z" id="Shape" /></g></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 58 58" className="image_welcome">
+                  <g fillRule="evenodd" fill="none" id="Page-1">
+                    <g fillRule="nonzero" id="059---Money-Bag">
+                      <path fill="#f29c1f" d="m23 16.98v-9.98c0-1.66-2.91-3-6.5-3s-6.5 1.34-6.5 3v11.01c-3.36.12-6 1.41-6 2.99v26.23c-2.35.45-4 1.52-4 2.77v5c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3v-2c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3l.5-13z" id="Shape" /><path fill="#f3d55b" d="m54.527 13.355c-.072-.108-1.461-2.092-5.5-3 1.0331933-.84954961 1.6441867-2.10769199 1.673-3.445 0-2.358-2.006-4.417-4.769-4.895-.5372791-.08053169-1.0405693.28263221-1.1334952.81790692s.2585108 1.04682267.7914952 1.15209308c1.798.315 3.111 1.542 3.111 2.925 0 1.638-1.775 2.984-4 3-.8755119.01021562-1.7370699-.21978683-2.491-.665-.4719273-.28691192-1.0870881-.13692731-1.374.33300001-.2869119.47192729-.1369273 1.08708809.335 1.37399999 1.0594655.6270481 2.2688888.9556657 3.5.951.01 0 .017.005.026.005 6.213 0 8.124 2.5 8.176 2.567.200426.2958159.5434432.4622351.8998403.436569.356397-.025666.6720289-.239518.828-.561.155971-.3214819.1285857-.7017531-.0718403-.997569z" id="Shape" /><path fill="#a56a43" d="m45.19 52h-19.19v-12c0-1.66-2.91-3-6.5-3-.8387701-.0034358-1.6759363.0735835-2.5.23v-10.89c1.4565382-3.4367258 3.4852949-6.6015863 6-9.36v-.01c2.0874104-2.3329398 4.5726948-4.2764728 7.34-5.74v-.01c.8551132.5204315 1.8390235.7906603 2.84.78h5.6c1.0050057.0070139 1.9920265-.2665813 2.85-.79 2.18 1.08 12.01 6.72 15.56 21.79 4 17-8 19-12 19z" id="Shape" /><path fill="#fdd7ad" d="m45.19 49c-.5522847 0-1-.4477153-1-1s.4477153-1 1-1c.723 0 4.425-.125 6.376-2.589.9225786-1.3035875 1.4145252-2.8629918 1.407-4.46.0332885-.5485091.4978261-.970453 1.047-.951.2649656.0126906.5140321.1301392.6923876.326499.1783554.1963597.2713838.4555393.2586124.720501-.0084762 2.0150456-.6508108 3.9763353-1.836 5.606-2.524 3.186-7.061 3.347-7.945 3.347z" id="Shape" /><path fill="#805333" d="m46 1.17c.01 2.2-.43 7-3.95 9.75-.1318612.1079533-.2723293.2049432-.42.29-.8579735.5234187-1.8449943.7970139-2.85.79h-5.6c-1.0009765.0106603-1.9848868-.2595685-2.84-.78-.1495192-.0908277-.2931396-.191028-.43-.3-3.52-2.75-3.95-7.55-3.95-9.75.0016568-.33258473.1685567-.6425818.4452874-.8270689.2767306-.18448711.6270741-.21931899.9347126-.0929311 1.28.54 1.71 1.75 3.65 1.75 2.49 0 2.49-2 4.98-2s2.5 2 5 2c1.94 0 2.37-1.22 3.65-1.75.3076385-.12638789.657982-.09155601.9347126.0929311.2767307.1844871.4436306.49448417.4452874.8270689z" id="Shape" /><path fill="#603e26" d="m36.45 11.982c1.164119-1.6359812 2.0400633-3.45889226 2.59-5.39.1491169-.53295478.7020452-.84411688 1.235-.695s.8441169.70204522.695 1.235c-.545409 1.83131833-1.3359015 3.5804932-2.35 5.2l3.34 3.12c.4031679.3783151.423315 1.0118321.045 1.415-.3783151.4031678-1.0118321.423315-1.415.045l-3.59-3.35v3.3c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1v-3.3l-3.58 3.35c-.1844231.1726652-.4273651.2691275-.68.27-.2800466-.0009897-.5474685-.1166316-.74-.32-.3709419-.4048785-.3486888-1.0324134.05-1.41l3.35-3.12c-1.0179074-1.618792-1.8117948-3.36803545-2.36-5.2-.0704836-.2559398-.0363072-.52940237.0949974-.76012341.1313047-.23072105.3489609-.3997642.6050026-.46987659.2546559-.07392838.5283328-.04249768.7595988.08723693.231266.1297346.4007475.34690489.4704012.60276307.5569409 1.93085241 1.4433119 3.7509576 2.62 5.38z" id="Shape" /><path fill="#f0c419" d="m17 21c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.58 2.64-2.87 6-2.99.17-.01.33-.01.5-.01 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#e57e25" d="m23 7v9.98c-2.5147051 2.7584137-4.5434618 5.9232742-6 9.36v-5.34c0-1.66-2.91-3-6.5-3-.17 0-.33 0-.5.01v-11.01c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#f9eab0" d="m13 50c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.25 1.65-2.32 4-2.77.82406367-.1564165 1.66122992-.2334358 2.5-.23 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#f3d55b" d="m13 50v5c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3v-5c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#f3d55b" d="m26 40c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3c0-1.25 1.65-2.32 4-2.77.8240637-.1564165 1.6612299-.2334358 2.5-.23 3.59 0 6.5 1.34 6.5 3z" id="Shape" /><path fill="#f0c419" d="m26 40v13c0 1.66-2.91 3-6.5 3s-6.5-1.34-6.5-3v-13c0 1.66 2.91 3 6.5 3s6.5-1.34 6.5-3z" id="Shape" /><path fill="#fdd7ad" d="m39 27c0 .5522847.4477153 1 1 1s1-.4477153 1-1c0-2.209139-1.790861-4-4-4v-1c0-.5522847-.4477153-1-1-1s-1 .4477153-1 1v1c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4v4c-1.1045695 0-2-.8954305-2-2 0-.5522847-.4477153-1-1-1s-1 .4477153-1 1c0 2.209139 1.790861 4 4 4v1c0 .5522847.4477153 1 1 1s1-.4477153 1-1v-1c2.209139 0 4-1.790861 4-4s-1.790861-4-4-4v-4c1.1045695 0 2 .8954305 2 2zm0 6c0 1.1045695-.8954305 2-2 2v-4c1.1045695 0 2 .8954305 2 2zm-4-4c-1.1045695 0-2-.8954305-2-2s.8954305-2 2-2z" id="Shape" /></g></g></svg>
 
-                {/* <p className="number-h1">{pointInfo >= 90 ? solde : 0}  دينار</p> */}
+                {/* <p className="number-h1">{solde >= 90 ? solde : 0}  دينار</p> */}
 
-                {/* 
-                <p className="number-h1">{pointInfo}  دينار</p> */}
+
+                {/* <p className="number-h1">{solde}  دينار</p> */}
 
 
               </div>
@@ -721,34 +739,101 @@ const Admin = () => {
                 <table className="table mb-0   table-bordered ">
                   <thead>
                     <tr>
-                      <th scope="col" className="fw-bold text-black fs-6 px-0 py-3">
-                        <i className="fas fa-layer-group me-2" />الأجيال
+                      <th rowSpan={2} className="fw-bold text-black fs-6 px-3 py-3 text-center align-top">
+                        <i className="fas fa-layer-group me-2" />
+                        الأجيال
                       </th>
-                      <th scope="col" className="fw-bold text-black fs-6 px-0 py-3">
-                        <i className="fas fa-arrow-right me-2 " />الشركاء يمينا
-                      </th>
-                      <th scope="col" className="fw-bold text-black fs-6 px-0 py-3">
-                        <i className="fas fa-arrow-left me-2  " />الشركاء يسارا
-                      </th>
+
+                      {userInfo?.modee === "premium" ? (
+                        <>
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3 text-center">
+                            <i className="fas fa-arrow-right me-2" />
+                            الشركاء يمينا
+                          </th>
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3 text-center">
+                            <i className="fas fa-arrow-left me-2" />
+                            الشركاء يسارا
+                          </th>
+                        </>
+                      ) : (
+                        <>
+                          <th className="fw-bold text-black fs-6 px-3 py-3 text-center">
+                            <i className="fas fa-arrow-right me-2" />
+                            الشركاء يمينا
+                          </th>
+                          <th className="fw-bold text-black fs-6 px-3 py-3 text-center">
+                            <i className="fas fa-arrow-left me-2" />
+                            الشركاء يسارا
+                          </th>
+                        </>
+                      )}
                     </tr>
 
+                    {userInfo?.modee === "premium" && (
+                      <tr>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        </th>
+                      </tr>
+                    )}
                   </thead>
-                  <tbody >
-                    {generations?.map((gen, index) => (
-                      <tr key={gen.id || index}>
-                        <td className="fw-semibold">
-                          <span className="badge  p-2 fs-6" style={{
-                            background: getGenerationColor(index),
-                            color: 'white',
-                            fontWeight: 'bold'
-                          }} > الجيل {gen.generation}  </span>
-                        </td>
-                        <td><span className="fw-bold fs-5 text-success">{gen.rightPartners}</span></td>
-                        <td><span className="fw-bold fs-5 text-info">{gen.leftPartners}</span></td>
 
+
+                  <tbody>
+                    {generations.map((gen, index) => (
+                      <tr key={index}>
+                        <td className="fw-semibold text-center">
+                          <span
+                            className="badge p-2 fs-6"
+                            style={{
+                              background: getGenerationColor(index),
+                              color: "white",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            الجيل {gen.generation}
+                          </span>
+                        </td>
+
+                        {userInfo?.modee !== "premium" ? (
+                          <>
+                            <td className="text-center fw-bold fs-5 text-success">
+                              {gen.rightPartners}
+                            </td>
+                            <td className="text-center fw-bold fs-5 text-info">
+                              {gen.leftPartners}
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td className="text-center fw-bold text-success">
+                              {gen.rightRight}
+                            </td>
+                            <td className="text-center fw-bold text-warning">
+                              {gen.leftRight}
+                            </td>
+
+                            <td className="text-center fw-bold text-info">
+                              {gen.rightLeft}
+                            </td>
+                            <td className="text-center fw-bold text-danger">
+                              {gen.leftLeft}
+                            </td>
+                          </>
+                        )}
                       </tr>
                     ))}
                   </tbody>
+
                 </table>
               </div>
             </div>
@@ -778,7 +863,7 @@ const Admin = () => {
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="card-elegant p-4 h-100 fade-in fade-in-4">
+                <div className="card-elegant bg-white p-4 h-100 fade-in fade-in-4">
                   <div className="d-flex align-items-center mb-3">
                     <div className="icon-wrapper icon-wrapper-warning me-3" style={{ width: 60, height: 60 }}>
                       <FaCrown className="text-white" size={28} />
@@ -857,6 +942,7 @@ const Admin = () => {
                   <BiWallet className="text-white" size={32} />
                 </div>
                 <h2 className="fw-bold mb-2 ">{solde}   د.ت</h2>
+                {/* <h2 className="fw-bold mb-2 ">{pointInfo}   د.ت</h2> */}
 
 
               </div>
@@ -1119,18 +1205,131 @@ const Admin = () => {
                         disabled
                       />
                     </div>
-                    <div className="mb-2  p-0 mb-md-3">
-                      <div className="mb-md-3 d-flex  gap-4 ">
-                        <div className="form-check p-0 p-md-3">
-                          <input className="form-check-input" type="radio" name="position" value="right" checked={position === "right"} onChange={(e) => setPosition(e.target.value)} />
+
+
+                    <div className="mb-3 d-flex gap-4">
+                      {userInfo.modee === "normale" &&
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="modee"
+                            value="normale"
+                            checked={modee === "normale"}
+                            onChange={(e) => {
+                              setModee(e.target.value);
+                              setPosition("");
+                            }}
+                          />
+                          <label className="form-check-label">عادي</label>
+                        </div>
+                      }
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="modee"
+                          value="premium"
+                          checked={modee === "premium"}
+                          onChange={(e) => {
+                            setModee(e.target.value);
+                            setPosition("");
+                          }}
+                        />
+                        <label className="form-check-label">محترف</label>
+                      </div>
+                    </div>
+
+
+                    {modee === "normale" ? (
+
+                      <div className="mb-3 d-flex gap-4">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input border-dark"
+                            type="radio"
+                            name="position"
+                            value="right"
+                            checked={position === "right"}
+                            onChange={(e) => setPosition(e.target.value)}
+                          />
                           <label className="form-check-label">يمين</label>
                         </div>
-                        <div className="form-check p-0 p-md-3">
-                          <input className="form-check-input" type="radio" name="position" value="left" checked={position === "left"} onChange={(e) => setPosition(e.target.value)} />
+
+                        <div className="form-check">
+                          <input
+                            className="form-check-input border-dark"
+                            type="radio"
+                            name="position"
+                            value="left"
+                            checked={position === "left"}
+                            onChange={(e) => setPosition(e.target.value)}
+                          />
                           <label className="form-check-label">يسار</label>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+
+                      <div className="mb-3 d-flex gap-5">
+
+                        <div>
+                          <div className="form-check mb-2">
+                            <input
+                              className="form-check-input border-dark"
+                              type="radio"
+                              name="position"
+                              value="rightRight"
+                              checked={position === "rightRight"}
+                              onChange={(e) => setPosition(e.target.value)}
+                            />
+                            <label className="form-check-label">يمين اليمين</label>
+                          </div>
+
+                          <div className="form-check">
+                            <input
+                              className="form-check-input border-dark"
+                              type="radio"
+                              name="position"
+                              value="leftRight"
+                              checked={position === "leftRight"}
+                              onChange={(e) => setPosition(e.target.value)}
+                            />
+                            <label className="form-check-label">يسار اليمين</label>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div className="form-check mb-2">
+                            <input
+                              className="form-check-input border-dark"
+                              type="radio"
+                              name="position"
+                              value="rightLeft"
+                              checked={position === "rightLeft"}
+                              onChange={(e) => setPosition(e.target.value)}
+                            />
+                            <label className="form-check-label">يمين اليسار</label>
+                          </div>
+
+                          <div className="form-check">
+                            <input
+                              className="form-check-input border-dark"
+                              type="radio"
+                              name="position"
+                              value="leftLeft"
+                              checked={position === "leftLeft"}
+                              onChange={(e) => setPosition(e.target.value)}
+                            />
+                            <label className="form-check-label">يسار اليسار</label>
+                          </div>
+                        </div>
+
+                      </div>
+                    )}
+
+
+
+
                     {/* Hidden field for creator, auto-filled */}
                     <div className="mb-0  p-0 mb-md-3">
                       <input type="text" id="creator" name="creator" placeholder="إسم الحساب" value={createdBy}
