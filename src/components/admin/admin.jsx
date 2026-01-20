@@ -29,6 +29,7 @@ import { Modal } from "antd";
 const Admin = () => {
   // State for form fields
   const [nom, setNom] = useState("");
+
   const [prenom, setPrenom] = useState("");
   const [pseudo, setPseudo] = useState("");
   const [cin, setCin] = useState("");
