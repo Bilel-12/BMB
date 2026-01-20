@@ -1209,7 +1209,7 @@ const Admin = () => {
 
 
                     <div className="mb-3 d-flex gap-4">
-                      {modee === "normale" &&
+                      {userInfo.modee === "normale" &&
                         <div className="form-check">
                           <input
                             className="form-check-input"
@@ -1242,7 +1242,7 @@ const Admin = () => {
                     </div>
 
 
-                    {modee === "normale" ? (
+                    {userInfo.modee === "normale" ? (
 
                       <div className="mb-3 d-flex gap-4">
                         <div className="form-check">
