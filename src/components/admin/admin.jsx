@@ -1209,7 +1209,7 @@ const Admin = () => {
 
 
                     <div className="mb-3 d-flex gap-4">
-                      {userInfo.modee === "normale" &&
+                      {modee === "normale" &&
                         <div className="form-check">
                           <input
                             className="form-check-input"
