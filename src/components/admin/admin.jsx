@@ -736,66 +736,96 @@ const Admin = () => {
                 </h4>
                 <span className="badge fs-6 mt-3 mt-md-0" style={{ background: 'var(--success-gradient)' }}>{generations.length} أجيال نشطة</span>
               </div>
-              <div className="table-responsive ">
-                <div className="d-block d-md-none">
-                  {generations.map((gen, index) => (
-                    <div key={index} className="card mb-3 shadow-sm">
-                      <div className="card-body">
+              <div className="table-responsive">
+                <table className="table mb-0 table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th
+                        rowSpan={userInfo?.modee === "premium" ? 2 : 1}
+                        className="fw-bold text-black fs-6 px-3 py-3 align-top"
+                      >
+                        <i className="fas fa-layer-group me-2" />
+                        الأجيال
+                      </th>
 
-                        <div className="text-center mb-3">
+                      {userInfo?.modee === "premium" ? (
+                        <>
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3">
+                            <i className="fas fa-arrow-right me-2" />
+                            الشركاء يمينا
+                          </th>
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3">
+                            <i className="fas fa-arrow-left me-2" />
+                            الشركاء يسارا
+                          </th>
+                        </>
+                      ) : (
+                        <>
+                          <th className="fw-bold text-black fs-6 px-3 py-3">
+                            <i className="fas fa-arrow-right me-2" />
+                            الشركاء يمينا
+                          </th>
+                          <th className="fw-bold text-black fs-6 px-3 py-3">
+                            <i className="fas fa-arrow-left me-2" />
+                            الشركاء يسارا
+                          </th>
+                        </>
+                      )}
+                    </tr>
+
+                    {userInfo?.modee === "premium" && (
+                      <tr>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        </th>
+                        <th className="text-center">
+                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        </th>
+                      </tr>
+                    )}
+                  </thead>
+
+                  <tbody>
+                    {generations.map((gen, index) => (
+                      <tr key={index}>
+                        <td className="fw-semibold text-center">
                           <span
                             className="badge p-2 fs-6"
                             style={{
                               background: getGenerationColor(index),
                               color: "white",
+                              fontWeight: "bold",
                             }}
                           >
                             الجيل {gen.generation}
                           </span>
-                        </div>
+                        </td>
 
                         {userInfo?.modee !== "premium" ? (
                           <>
-                            <div className="d-flex justify-content-between mb-2">
-                              <span className="fw-bold text-success">يمين</span>
-                              <span>{gen.rightPartners}</span>
-                            </div>
-
-                            <div className="d-flex justify-content-between">
-                              <span className="fw-bold text-info">يسار</span>
-                              <span>{gen.leftPartners}</span>
-                            </div>
+                            <td className="fw-bold fs-5 text-success">{gen.rightPartners}</td>
+                            <td className="fw-bold fs-5 text-info">{gen.leftPartners}</td>
                           </>
                         ) : (
                           <>
-                            <div className="d-flex justify-content-between mb-2">
-                              <span className="text-success fw-bold">يمين → يمين</span>
-                              <span>{gen.rightRight}</span>
-                            </div>
-
-                            <div className="d-flex justify-content-between mb-2">
-                              <span className="text-warning fw-bold">يسار → يمين</span>
-                              <span>{gen.leftRight}</span>
-                            </div>
-
-                            <div className="d-flex justify-content-between mb-2">
-                              <span className="text-info fw-bold">يمين → يسار</span>
-                              <span>{gen.rightLeft}</span>
-                            </div>
-
-                            <div className="d-flex justify-content-between">
-                              <span className="text-danger fw-bold">يسار → يسار</span>
-                              <span>{gen.leftLeft}</span>
-                            </div>
+                            <td className="fw-bold text-success">{gen.rightRight}</td>
+                            <td className="fw-bold text-warning">{gen.leftRight}</td>
+                            <td className="fw-bold text-info">{gen.rightLeft}</td>
+                            <td className="fw-bold text-danger">{gen.leftLeft}</td>
                           </>
                         )}
-
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+
             </div>
             {/* Additional Features */}
             <div className="row g-4">
