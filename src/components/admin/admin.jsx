@@ -155,7 +155,7 @@ const Admin = () => {
   const markNotificationsAsRead = async () => {
     try {
       const response = await fetch(
-        "http://bmb-backend-2.onrender.com/api/users/mark-notifications-read",
+        "https://bmb-backend-2.onrender.com/api/users/mark-notifications-read",
         {
           method: "PUT",
           credentials: "include",
@@ -185,7 +185,7 @@ const Admin = () => {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          "http://bmb-backend-2.onrender.com/api/users/notifications",
+          "https://bmb-backend-2.onrender.com/api/users/notifications",
           {
             method: "GET",
             credentials: "include",
@@ -255,7 +255,7 @@ const Admin = () => {
         if (!userInfo?._id) return;
 
         const response = await axios.get(
-          `http://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
+          `https://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
           { withCredentials: true }
         );
 
@@ -385,7 +385,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        "http://bmb-backend-2.onrender.com/api/users/transfer-points",
+        "https://bmb-backend-2.onrender.com/api/users/transfer-points",
         {
           method: "PUT",
           headers: {
@@ -446,7 +446,7 @@ const Admin = () => {
 
       // 3️⃣ Refetch les générations depuis le backend pour être à jour
       const response = await axios.get(
-        `http://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
+        `https://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
         { withCredentials: true }
       );
 
@@ -499,7 +499,7 @@ const Admin = () => {
 
     const fetchSolde = async () => {
       try {
-        const res = await fetch(`http://bmb-backend-2.onrender.com/api/users/getsolde`, {
+        const res = await fetch(`https://bmb-backend-2.onrender.com/api/users/getsolde`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -529,7 +529,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://bmb-backend-2.onrender.com/api/users/getuserpoints/${userInfo._id}`, {
+        const res = await fetch(`https://bmb-backend-2.onrender.com/api/users/getuserpoints/${userInfo._id}`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -669,7 +669,7 @@ const Admin = () => {
               </div>
 
               <div className="mt-3 mt-md-0 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg"
+                <svg xmlns="https://www.w3.org/2000/svg"
                   viewBox="0 0 58 58" className="image_welcome">
                   <g fillRule="evenodd" fill="none" id="Page-1">
                     <g fillRule="nonzero" id="059---Money-Bag">
