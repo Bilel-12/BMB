@@ -155,7 +155,7 @@ const Admin = () => {
   const markNotificationsAsRead = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/users/mark-notifications-read",
+        "http://bmb-backend-2.onrender.com/api/users/mark-notifications-read",
         {
           method: "PUT",
           credentials: "include",
@@ -185,7 +185,7 @@ const Admin = () => {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/users/notifications",
+          "http://bmb-backend-2.onrender.com/api/users/notifications",
           {
             method: "GET",
             credentials: "include",
@@ -255,7 +255,7 @@ const Admin = () => {
         if (!userInfo?._id) return;
 
         const response = await axios.get(
-          `http://localhost:3000/api/users/${userInfo._id}/tree-stats`,
+          `http://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
           { withCredentials: true }
         );
 
@@ -385,7 +385,7 @@ const Admin = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/users/transfer-points",
+        "http://bmb-backend-2.onrender.com/api/users/transfer-points",
         {
           method: "PUT",
           headers: {
@@ -446,7 +446,7 @@ const Admin = () => {
 
       // 3️⃣ Refetch les générations depuis le backend pour être à jour
       const response = await axios.get(
-        `http://localhost:3000/api/users/${userInfo._id}/tree-stats`,
+        `http://bmb-backend-2.onrender.com/api/users/${userInfo._id}/tree-stats`,
         { withCredentials: true }
       );
 
@@ -499,7 +499,7 @@ const Admin = () => {
 
     const fetchSolde = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/users/getsolde`, {
+        const res = await fetch(`http://bmb-backend-2.onrender.com/api/users/getsolde`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -529,7 +529,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/users/getuserpoints/${userInfo._id}`, {
+        const res = await fetch(`http://bmb-backend-2.onrender.com/api/users/getuserpoints/${userInfo._id}`, {
           method: "GET",
           credentials: "include",
           headers: {
