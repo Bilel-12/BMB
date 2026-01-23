@@ -179,6 +179,7 @@ const Admin = () => {
   }, [isNotificationVisible]);
   const [position, setPosition] = useState("");
   const [modee, setModee] = useState("normale");
+  const [khetta, setkhetta] = useState("normale");
 
   // Toggle functions for popups
   useEffect(() => {
@@ -331,41 +332,11 @@ const Admin = () => {
       await logoutApiCall().unwrap();
       dispatch(logout());
       window.localStorage.removeItem("userInfo");
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
   };
-  // const submitRegistrationHandler = async (e) => {
-  //   e.preventDefault();
-
-  //   if (password !== confirmPassword) {
-  //     toast.error("كلمات المرور غير متطابقة");
-  //     return;
-  //   }
-
-  //   try {
-  //     const res = await register({
-  //       nom,
-  //       prenom,
-  //       pseudo,
-  //       cin,
-  //       email,
-  //       tel,
-  //       createdBy: userInfo.pseudo,  // juste info
-  //       points,
-  //       password,
-  //       parentId: userInfo._id,      // 👈 important : l’ID du parrain (connecté)
-  //       position: position           // 👈 "left" ou "right"
-  //     }).unwrap();
-
-  //     toast.success("تم تسجيل الحساب بنجاح");
-  //     toggleFormPopup();
-  //     setIsModalRegisterOpen(false)
-  //   } catch (err) {
-  //     toast.error(err?.data?.message || err.error);
-  //   }
-  // };
 
   const [reload, setReload] = useState(false);
   // 1. Fonction de transfert de points modifiée
@@ -1197,32 +1168,33 @@ const Admin = () => {
                     </div>
 
 
+
+                    {/* ================= MODE ================= */}
                     <div className="mb-3 d-flex gap-4">
-                      {userInfo.modee === "normale" &&
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="modee"
-                            value="normale"
-                            checked={modee === "normale"}
-                            onChange={(e) => {
-                              setModee(e.target.value);
-                              setPosition("");
-                            }}
-                          />
-                          <label className="form-check-label">عادي</label>
-                        </div>
-                      }
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="modee"
+                          value="normale"
+                          checked={khetta === "normale"}
+                          onChange={(e) => {
+                            setkhetta(e.target.value);
+                            setPosition("");
+                          }}
+                        />
+                        <label className="form-check-label">عادي</label>
+                      </div>
+
                       <div className="form-check">
                         <input
                           className="form-check-input"
                           type="radio"
                           name="modee"
                           value="premium"
-                          checked={modee === "premium"}
+                          checked={khetta === "premium"}
                           onChange={(e) => {
-                            setModee(e.target.value);
+                            setkhetta(e.target.value);
                             setPosition("");
                           }}
                         />
@@ -1230,9 +1202,10 @@ const Admin = () => {
                       </div>
                     </div>
 
+                    {/* ================= POSITIONS ================= */}
 
-                    {userInfo.modee === "normale" ? (
-
+                    {/* =====  NORMALE  ===== */}
+                    {userInfo?.modee === "normale" && (
                       <div className="mb-3 d-flex gap-4">
                         <div className="form-check">
                           <input
@@ -1258,8 +1231,10 @@ const Admin = () => {
                           <label className="form-check-label">يسار</label>
                         </div>
                       </div>
-                    ) : (
+                    )}
 
+                    {/* =====  premium  ===== */}
+                    {userInfo?.modee === "premium" && (
                       <div className="mb-3 d-flex gap-5">
 
                         <div>
@@ -1316,6 +1291,10 @@ const Admin = () => {
 
                       </div>
                     )}
+
+
+
+
 
 
 

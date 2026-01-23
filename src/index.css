@@ -67,17 +67,3 @@ button:focus-visible {
   }
 }
 
-
-.table th,
-.table td {
-  min-width: 100px;
-  /* Empêche les colonnes de s'écraser */
-  white-space: nowrap;
-  /* Texte sur une seule ligne */
-}
-
-.table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  /* Scroll fluide sur mobile */
-}
