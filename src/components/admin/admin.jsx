@@ -707,38 +707,36 @@ const Admin = () => {
                 </h4>
                 <span className="badge fs-6 mt-3 mt-md-0" style={{ background: 'var(--success-gradient)' }}>{generations.length} أجيال نشطة</span>
               </div>
-              <div className="table-responsive">
-                <table className="table mb-0 table-bordered text-center">
+              <div className="overflow-x-auto">
+                <table className="table mb-0 table-bordered min-w-full">
                   <thead>
                     <tr>
-                      <th
-                        rowSpan={userInfo?.modee === "premium" ? 2 : 1}
-                        className="fw-bold text-black fs-6 px-3 py-3 align-top"
-                      >
-                        <i className="fas fa-layer-group me-2" />
-                        الأجيال
+                      <th rowSpan={2} className="fw-bold text-black fs-6 px-2 sm:px-3 py-3 text-center align-top w-20 sm:w-auto whitespace-nowrap">
+                        <i className="fas fa-layer-group me-1 sm:me-2" />
+                        <span className=" sm:inline">الأجيال</span>
                       </th>
 
                       {userInfo?.modee === "premium" ? (
                         <>
-                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3">
-                            <i className="fas fa-arrow-right me-2" />
-                            الشركاء يمينا
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-2 sm:px-3 py-3 text-center whitespace-nowrap">
+                            <i className="fas fa-arrow-right me-1 sm:me-2" />
+                            <span className=" sm:inline">الشركاء يمينا</span>
                           </th>
-                          <th colSpan={2} className="fw-bold text-black fs-6 px-3 py-3">
-                            <i className="fas fa-arrow-left me-2" />
-                            الشركاء يسارا
+                          <th colSpan={2} className="fw-bold text-black fs-6 px-2 sm:px-3 py-3 text-center whitespace-nowrap">
+                            <i className="fas fa-arrow-left me-1 sm:me-2" />
+                            <span className=" sm:inline">الشركاء يسارا</span>
                           </th>
                         </>
                       ) : (
                         <>
-                          <th className="fw-bold text-black fs-6 px-3 py-3">
-                            <i className="fas fa-arrow-right me-2" />
-                            الشركاء يمينا
+                          <th className="fw-bold text-black fs-6 px-2 sm:px-3 py-3 text-center whitespace-nowrap">
+                            <i className="fas fa-arrow-right me-1 sm:me-2" />
+                            <span className=" sm:inline">الشركاء يمينا</span>
                           </th>
-                          <th className="fw-bold text-black fs-6 px-3 py-3">
-                            <i className="fas fa-arrow-left me-2" />
-                            الشركاء يسارا
+                          <th className="fw-bold text-black fs-6 px-2 sm:px-3 py-3 text-center whitespace-nowrap">
+                            <i className="fas fa-arrow-left me-1 sm:me-2" />
+                            <span className=" sm:inline">الشركاء يسارا</span>
+
                           </th>
                         </>
                       )}
@@ -746,17 +744,17 @@ const Admin = () => {
 
                     {userInfo?.modee === "premium" && (
                       <tr>
-                        <th className="text-center">
-                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        <th className="text-center px-2 sm:px-3">
+                          <span className="bg-info py-1 px-2 sm:py-2 sm:px-3 rounded-2 text-xs sm:text-base">يمين</span>
                         </th>
-                        <th className="text-center">
-                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        <th className="text-center px-2 sm:px-3">
+                          <span className="bg-info py-1 px-2 sm:py-2 sm:px-3 rounded-2 text-xs sm:text-base">يسار</span>
                         </th>
-                        <th className="text-center">
-                          <span className="bg-info py-2 px-3 rounded-2">يمين</span>
+                        <th className="text-center px-2 sm:px-3">
+                          <span className="bg-info py-1 px-2 sm:py-2 sm:px-3 rounded-2 text-xs sm:text-base">يمين</span>
                         </th>
-                        <th className="text-center">
-                          <span className="bg-info py-2 px-3 rounded-2">يسار</span>
+                        <th className="text-center px-2 sm:px-3">
+                          <span className="bg-info py-1 px-2 sm:py-2 sm:px-3 rounded-2 text-xs sm:text-base">يسار</span>
                         </th>
                       </tr>
                     )}
@@ -765,30 +763,43 @@ const Admin = () => {
                   <tbody>
                     {generations.map((gen, index) => (
                       <tr key={index}>
-                        <td className="fw-semibold text-center">
+                        <td className="fw-semibold text-center px-2 sm:px-3">
                           <span
-                            className="badge p-2 fs-6"
+                            className="badge p-1 sm:p-2 text-xs sm:text-base whitespace-nowrap"
                             style={{
                               background: getGenerationColor(index),
                               color: "white",
                               fontWeight: "bold",
                             }}
                           >
-                            الجيل {gen.generation}
+                            <span className="hidden sm:inline">الجيل {gen.generation}</span>
+                            <span className="inline sm:hidden">{gen.generation}</span>
                           </span>
                         </td>
 
                         {userInfo?.modee !== "premium" ? (
                           <>
-                            <td className="fw-bold fs-5 text-success">{gen.rightPartners}</td>
-                            <td className="fw-bold fs-5 text-info">{gen.leftPartners}</td>
+                            <td className="text-center fw-bold text-base sm:text-xl text-success px-2 sm:px-3">
+                              {gen.rightPartners}
+                            </td>
+                            <td className="text-center fw-bold text-base sm:text-xl text-info px-2 sm:px-3">
+                              {gen.leftPartners}
+                            </td>
                           </>
                         ) : (
                           <>
-                            <td className="fw-bold text-success">{gen.rightRight}</td>
-                            <td className="fw-bold text-warning">{gen.leftRight}</td>
-                            <td className="fw-bold text-info">{gen.rightLeft}</td>
-                            <td className="fw-bold text-danger">{gen.leftLeft}</td>
+                            <td className="text-center fw-bold text-success px-2 sm:px-3 text-sm sm:text-base">
+                              {gen.rightRight}
+                            </td>
+                            <td className="text-center fw-bold text-warning px-2 sm:px-3 text-sm sm:text-base">
+                              {gen.leftRight}
+                            </td>
+                            <td className="text-center fw-bold text-info px-2 sm:px-3 text-sm sm:text-base">
+                              {gen.rightLeft}
+                            </td>
+                            <td className="text-center fw-bold text-danger px-2 sm:px-3 text-sm sm:text-base">
+                              {gen.leftLeft}
+                            </td>
                           </>
                         )}
                       </tr>
