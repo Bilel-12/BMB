@@ -772,8 +772,7 @@ const Admin = () => {
                               fontWeight: "bold",
                             }}
                           >
-                            <span className="hidden sm:inline">الجيل {gen.generation}</span>
-                            <span className="inline sm:hidden">{gen.generation}</span>
+                            <span className=" sm:inline">الجيل {gen.generation}</span>
                           </span>
                         </td>
 
