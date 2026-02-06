@@ -532,7 +532,7 @@ const Admin = () => {
 
   const [isModalRegisterOpen, setIsModalRegisterOpen] = useState(false);
 
-  const [isCheckedMode, setIsCheckedMode] = useState(true);
+
   const [isModalUUpdateOpen, setIsModalUpdateOpen] = useState(false);
   const adminId = "68c280753814846bdf1bd67b";
   const generationColors = [
