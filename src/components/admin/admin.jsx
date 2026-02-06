@@ -224,7 +224,7 @@ const Admin = () => {
       setEmail("");
       setTel("");
       setPoints("");
-
+      setModee('')
       setCreator("");
       setPassword("");
       setConfirmPassword("");
@@ -808,6 +808,77 @@ const Admin = () => {
               </div>
 
             </div>
+
+
+
+
+
+
+
+            <div className="row mb-3">
+              <div className="col text-center">
+                <h1 className=" fw-bold mb-2">
+                  <i className="bi bi-wallet2" /> نظام الرصيد
+                </h1>
+                <p className="text-black-50">متابعة الرصيد اليومي والشهري</p>
+              </div>
+            </div>
+            <div className="row mb-3">
+              {/* الرصيد اليومي */}
+              <div className="col-md-6">
+                <div className="balance-card p-4 bg-white">
+                  <div className="card-body text-center">
+                    <div className="icon-wrapper daily-icon mx-auto">
+                      <i className="bi bi-calendar-day" />
+                    </div>
+                    <h5 className="balance-label">الرصيد اليومي</h5>
+
+                    <div className="balance-amount text-danger">
+                      1,250.00 <span className="fs-4">د.ت</span>
+                    </div>
+                    <hr className="my-3" />
+                    <div className="row text-center">
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المدخلات</p>
+                        <p className="fw-bold text-success mb-0">+500.00</p>
+                      </div>
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المصروفات</p>
+                        <p className="fw-bold text-danger mb-0">-350.00</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              {/* الرصيد الشهري */}
+              <div className="col-md-6">
+                <div className="balance-card p-4 bg-white">
+                  <div className="card-body text-center">
+                    <div className="icon-wrapper monthly-icon mx-auto">
+                      <i className="bi bi-calendar-month" />
+                    </div>
+                    <h5 className="balance-label">الرصيد الشهري</h5>
+
+                    <div className="balance-amount text-primary">
+                      15,780.00 <span className="fs-4">د.ت</span>
+                    </div>
+                    <hr className="my-3" />
+                    <div className="row text-center">
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المدخلات</p>
+                        <p className="fw-bold text-success mb-0">+20,000.00</p>
+                      </div>
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المصروفات</p>
+                        <p className="fw-bold text-danger mb-0">-4,220.00</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* Additional Features */}
             <div className="row g-4">
               <div className="col-md-6">
@@ -1179,6 +1250,7 @@ const Admin = () => {
 
 
 
+
                     {/* ================= MODE ================= */}
                     <div className="mb-3 d-flex gap-4">
                       <div className="form-check">
@@ -1190,6 +1262,7 @@ const Admin = () => {
                           checked={khetta === "normale"}
                           onChange={(e) => {
                             setkhetta(e.target.value);
+                            setModee(e.target.value);
                             setPosition("");
                           }}
                         />
@@ -1205,6 +1278,7 @@ const Admin = () => {
                           checked={khetta === "premium"}
                           onChange={(e) => {
                             setkhetta(e.target.value);
+                            setModee(e.target.value);
                             setPosition("");
                           }}
                         />
@@ -1214,7 +1288,7 @@ const Admin = () => {
 
                     {/* ================= POSITIONS ================= */}
 
-                    {/* =====  NORMALE  ===== */}
+                    {/* ===== USER NORMALE → 2 POSITIONS ===== */}
                     {userInfo?.modee === "normale" && (
                       <div className="mb-3 d-flex gap-4">
                         <div className="form-check">
@@ -1243,7 +1317,7 @@ const Admin = () => {
                       </div>
                     )}
 
-                    {/* =====  premium  ===== */}
+                    {/* ===== USER PREMIUM → 4 POSITIONS ===== */}
                     {userInfo?.modee === "premium" && (
                       <div className="mb-3 d-flex gap-5">
 
@@ -1301,11 +1375,6 @@ const Admin = () => {
 
                       </div>
                     )}
-
-
-
-
-
 
 
 
