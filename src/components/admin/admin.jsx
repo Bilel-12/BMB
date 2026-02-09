@@ -823,9 +823,9 @@ const Admin = () => {
                 <p className="text-black-50">متابعة الرصيد اليومي والشهري</p>
               </div>
             </div>
-            <div className="row mb-3">
+            <div className="row mb-5">
               {/* الرصيد اليومي */}
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <div className="balance-card p-4 bg-white">
                   <div className="card-body text-center">
                     <div className="icon-wrapper daily-icon mx-auto">
@@ -852,13 +852,40 @@ const Admin = () => {
                 </div>
               </div>
               {/* الرصيد الشهري */}
-              <div className="col-md-6">
+              <div className="col-md-4">
                 <div className="balance-card p-4 bg-white">
                   <div className="card-body text-center">
                     <div className="icon-wrapper monthly-icon mx-auto">
                       <i className="bi bi-calendar-month" />
                     </div>
                     <h5 className="balance-label">الرصيد الشهري</h5>
+
+                    <div className="balance-amount text-primary">
+                      15,780.00 <span className="fs-4">د.ت</span>
+                    </div>
+                    <hr className="my-3" />
+                    <div className="row text-center">
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المدخلات</p>
+                        <p className="fw-bold text-success mb-0">+20,000.00</p>
+                      </div>
+                      <div className="col-6">
+                        <p className="text-muted small mb-1">المصروفات</p>
+                        <p className="fw-bold text-danger mb-0">-4,220.00</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              {/* الأرباح المباشرة  */}
+              <div className="col-md-4">
+                <div className="balance-card p-4 bg-white">
+                  <div className="card-body text-center">
+                    <div className="icon-wrapper icon-wrapper-warning mx-auto">
+                      <i className="bi bi-calendar-month" />
+                    </div>
+                    <h5 className="balance-label"> الأرباح المباشرة</h5>
 
                     <div className="balance-amount text-primary">
                       15,780.00 <span className="fs-4">د.ت</span>
