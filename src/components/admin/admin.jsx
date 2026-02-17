@@ -817,9 +817,9 @@ const Admin = () => {
             <div className="row mb-md-3">
               <div className="col text-center">
                 <h1 className=" fw-bold mb-2">
-                  <i className="bi bi-wallet2" /> نظام الرصيد
+                  <i className="bi bi-wallet2" />  نظام الأرباح
                 </h1>
-                <p className="text-black-50">متابعة الرصيد اليومي والشهري</p>
+                <p className="text-black-50">متابعة الأرباح الأسبوعية والشهرية</p>
               </div>
             </div>
             <div className="row ">
@@ -831,7 +831,7 @@ const Admin = () => {
                       <div className="icon-wrapper2 daily-icon m-0">
                         <i className="bi bi-calendar-day" />
                       </div>
-                      <h5 className="balance-label mr-5">الأرباح الاسبوعية</h5>
+                      <h5 className="balance-label mr-5">الأرباح الأسبوعية</h5>
                     </div>
 
 
