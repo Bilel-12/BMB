@@ -243,6 +243,19 @@ body::before {
   overflow: hidden;
 }
 
+.icon-wrapper2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
 .icon-wrapper-primary {
   background: var(--primary-gradient);
   box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
@@ -479,6 +492,9 @@ html {
   width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  //  background: rgba(255, 255, 255, 0.1);
+}
 
 ::-webkit-scrollbar-thumb {
   //  background: var(--primary-gradient);
@@ -764,14 +780,14 @@ html {
 
 .balance-card {
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 50px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: none;
 }
 
 .balance-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(202, 16, 16, 0.3);
 }
 
 .icon-wrapper {
@@ -805,6 +821,7 @@ html {
   font-size: 1.1rem;
   color: #6c757d;
   margin-bottom: 0.5rem;
+  margin-right: 10px;
 }
 
 .card-body {

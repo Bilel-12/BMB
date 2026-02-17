@@ -814,8 +814,7 @@ const Admin = () => {
 
 
 
-
-            <div className="row mb-3">
+            <div className="row mb-md-3">
               <div className="col text-center">
                 <h1 className=" fw-bold mb-2">
                   <i className="bi bi-wallet2" /> نظام الرصيد
@@ -823,91 +822,70 @@ const Admin = () => {
                 <p className="text-black-50">متابعة الرصيد اليومي والشهري</p>
               </div>
             </div>
-            <div className="row mb-5">
+            <div className="row ">
               {/* الرصيد اليومي */}
-              <div className="col-md-4">
-                <div className="balance-card p-4 bg-white">
+              <div className="col-md-6">
+                <div className="balance-card p-4 m-md-5 bg-white">
                   <div className="card-body text-center">
-                    <div className="icon-wrapper daily-icon mx-auto">
-                      <i className="bi bi-calendar-day" />
+                    <div className=" d-flex align-items-center mb-3">
+                      <div className="icon-wrapper2 daily-icon m-0">
+                        <i className="bi bi-calendar-day" />
+                      </div>
+                      <h5 className="balance-label mr-5">الأرباح الاسبوعية</h5>
                     </div>
-                    <h5 className="balance-label">الرصيد اليومي</h5>
+
+
 
                     <div className="balance-amount text-danger">
-                      {solde}   <span className="fs-4">د.ت</span>
+                      <span> {solde ? solde : 0} </span> <br /> <span className="fs-4">د.ت</span>
                     </div>
-                    <hr className="my-3" />
-                    <div className="row text-center">
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
-                      </div>
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">0  د.ت</p>
-                      </div>
-                    </div>
+
 
                   </div>
                 </div>
               </div>
               {/* الرصيد الشهري */}
-              <div className="col-md-4">
-                <div className="balance-card p-4 bg-white">
+              <div className="col-md-6">
+                <div className="balance-card p-4 m-md-5 bg-white">
                   <div className="card-body text-center">
-                    <div className="icon-wrapper monthly-icon mx-auto">
-                      <i className="bi bi-calendar-month" />
-                    </div>
-                    <h5 className="balance-label">الرصيد الشهري</h5>
+                    <div className=" d-flex align-items-center mb-3">
 
-                    <div className="balance-amount text-primary">
-                      {solde} <span className="fs-4">د.ت</span>
-                    </div>
-                    <hr className="my-3" />
-                    <div className="row text-center">
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
+                      <div className="icon-wrapper2 monthly-icon m-0">
+                        <i className="bi bi-calendar-month" />
                       </div>
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">0 د.ت</p>
-                      </div>
+                      <h5 className="balance-label" >الأرباح الشهرية</h5>
                     </div>
-
-                  </div>
-                </div>
-              </div>
-
-              {/* الأرباح المباشرة  */}
-              <div className="col-md-4">
-                <div className="balance-card p-4 bg-white">
-                  <div className="card-body text-center">
-                    <div className="icon-wrapper icon-wrapper-warning">
-
-                      <i className="bi bi-calendar-month" />
-                    </div>
-                    <h5 className="balance-label">الأرباح المباشرة</h5>
-
-                    <div className="balance-amount text-primary">
-                      {solde} <span className="fs-4">د.ت</span>
-                    </div>
-                    <hr className="my-3" />
-                    <div className="row text-center">
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
-                      </div>
-                      <div className="col-6">
-                        <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">0 د.ت</p>
-                      </div>
+                    <div className="balance-amount text-danger">
+                      <span> {solde ? solde : 0} </span> <br /> <span className="fs-4">د.ت</span>
                     </div>
 
                   </div>
                 </div>
               </div>
             </div>
+            <div className="row justify-content-center mb-5">
+              {/* الأرباح المباشرة  */}
+              <div className="col-md-6 ">
+                <div className="balance-card p-4 m-md-5 bg-white">
+                  <div className="card-body text-center">
+                    <div className=" d-flex align-items-center  mb-3 ">
+                      <div className="icon-wrapper2 icon-wrapper-warning">
+
+                        <i className="bi bi-calendar-month" />
+                      </div>
+                      <h5 className="balance-label ">الأرباح المباشرة</h5>
+                    </div>
+                    <div className="balance-amount text-danger">
+                      <span> {solde ? solde : 0} </span> <br /> <span className="fs-4">د.ت</span>
+                    </div>
+                    <hr className="my-3" />
+                    <button className="btn-primary btn"> ارسال</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Additional Features */}
             <div className="row g-4">
               <div className="col-md-6">
