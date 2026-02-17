@@ -834,17 +834,17 @@ const Admin = () => {
                     <h5 className="balance-label">الرصيد اليومي</h5>
 
                     <div className="balance-amount text-danger">
-                      1,250.00 <span className="fs-4">د.ت</span>
+                      {solde}   <span className="fs-4">د.ت</span>
                     </div>
                     <hr className="my-3" />
                     <div className="row text-center">
                       <div className="col-6">
                         <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">+500.00</p>
+                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
                       </div>
                       <div className="col-6">
                         <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">-350.00</p>
+                        <p className="fw-bold text-danger mb-0">0  د.ت</p>
                       </div>
                     </div>
 
@@ -861,44 +861,46 @@ const Admin = () => {
                     <h5 className="balance-label">الرصيد الشهري</h5>
 
                     <div className="balance-amount text-primary">
-                      15,780.00 <span className="fs-4">د.ت</span>
+                      {solde} <span className="fs-4">د.ت</span>
                     </div>
                     <hr className="my-3" />
                     <div className="row text-center">
                       <div className="col-6">
                         <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">+20,000.00</p>
+                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
                       </div>
                       <div className="col-6">
                         <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">-4,220.00</p>
+                        <p className="fw-bold text-danger mb-0">0 د.ت</p>
                       </div>
                     </div>
 
                   </div>
                 </div>
               </div>
+
               {/* الأرباح المباشرة  */}
               <div className="col-md-4">
                 <div className="balance-card p-4 bg-white">
                   <div className="card-body text-center">
-                    <div className="icon-wrapper icon-wrapper-warning mx-auto">
+                    <div className="icon-wrapper icon-wrapper-warning">
+
                       <i className="bi bi-calendar-month" />
                     </div>
-                    <h5 className="balance-label"> الأرباح المباشرة</h5>
+                    <h5 className="balance-label">الأرباح المباشرة</h5>
 
                     <div className="balance-amount text-primary">
-                      15,780.00 <span className="fs-4">د.ت</span>
+                      {solde} <span className="fs-4">د.ت</span>
                     </div>
                     <hr className="my-3" />
                     <div className="row text-center">
                       <div className="col-6">
                         <p className="text-muted small mb-1">المدخلات</p>
-                        <p className="fw-bold text-success mb-0">+20,000.00</p>
+                        <p className="fw-bold text-success mb-0">{solde}   د.ت</p>
                       </div>
                       <div className="col-6">
                         <p className="text-muted small mb-1">المصروفات</p>
-                        <p className="fw-bold text-danger mb-0">-4,220.00</p>
+                        <p className="fw-bold text-danger mb-0">0 د.ت</p>
                       </div>
                     </div>
 
