@@ -1117,7 +1117,7 @@ const Admin = () => {
                 </div>
                 <div className="col-md-6 p-0">
                   <p className="text-muted mb-1">المبلغ المدفوع:</p>
-                  <p className="fw-semibold">43$+الرسوم</p>
+                  <p className="fw-semibold">65$+الرسوم</p>
                 </div>
 
               </div>
